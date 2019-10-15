@@ -1,7 +1,7 @@
 {
     "name": "newtranstar",
     "version": "1.0.0",
-    "description": "My epic Nuxt.js project",
+    "description": "This is a professional translation website of startimes.com",
     "author": "shangxinbo",
     "private": true,
     "config": {
