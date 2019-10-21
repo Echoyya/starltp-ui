@@ -100,5 +100,6 @@ export default {
     },
     generate: {
         dir: 'newtranstar'
-    }
+    },
+    modulesDir: ['../../node_modules']
 }
