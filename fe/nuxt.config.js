@@ -97,7 +97,7 @@ export default {
          ** You can extend webpack config here
          */
         extend(config, ctx) {
-            config.resolve.modules = ['/opt/npm/starltp-ui-node_modules/']
+            config.resolve.modules = ['node_modules', '/opt/npm/starltp-ui-node_modules/']
         }
     },
     generate: {
