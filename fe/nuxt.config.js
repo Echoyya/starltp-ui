@@ -96,10 +96,12 @@ export default {
         /*
          ** You can extend webpack config here
          */
-        extend(config, ctx) {}
+        extend(config, ctx) {
+            config.resolve.modules = ['/opt/npm/starltp-ui-node_modules/']
+        }
     },
     generate: {
         dir: 'newtranstar'
     },
-    modulesDir: ['../../node_modules']
+    modulesDir: ['node_modules', '/opt/npm/starltp-ui-node_modules/']
 }
