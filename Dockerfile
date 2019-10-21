@@ -1,5 +1,5 @@
 FROM nginx:stable-alpine
-ADD ./fe/newtranstar/ /tmp/ui
+ADD ./fe/starltp-ui/ /tmp/ui
 EXPOSE 80
-RUN mv  /tmp/ui  /usr/share/nginx/html/newtranstar
+RUN mv  /tmp/ui  /usr/share/nginx/html/starltp-ui
 CMD ["nginx", "-g", "daemon off;"]
