@@ -43,7 +43,7 @@ export default {
     /*
      ** Global CSS
      */
-    css: [],
+    css: ['video.js/dist/video-js.css', '~static/font/iconfont.css'],
     /*
      ** Plugins to load before mounting the App
      */
@@ -96,6 +96,7 @@ export default {
         /*
          ** You can extend webpack config here
          */
+        vendor: ['element-ui', 'vue-awesome-swiper', 'crypto-js'],
         extend(config, ctx) {
             config.resolve.modules = ['node_modules', '/opt/npm/starltp-ui-node_modules/']
         }
