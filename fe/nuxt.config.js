@@ -101,7 +101,7 @@ export default {
         }
     },
     generate: {
-        dir: 'newtranstar'
+        dir: 'starltp-ui'
     },
     modulesDir: ['node_modules', '/opt/npm/starltp-ui-node_modules/']
 }
