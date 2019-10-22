@@ -1,3 +1,4 @@
+
 export default {
     mode: 'universal',
     /*
@@ -39,7 +40,6 @@ export default {
      ** Customize the progress-bar color
      */
     loading: { color: '#a27c4c' },
-    cache: true,
     /*
      ** Global CSS
      */
@@ -70,10 +70,10 @@ export default {
     /*
      ** Nuxt.js dev-modules
      */
-    // buildModules: [
-    //     // Doc: https://github.com/nuxt-community/eslint-module
-    //     '@nuxtjs/eslint-module'
-    // ],
+    buildModules: [
+        // Doc: https://github.com/nuxt-community/eslint-module
+        '@nuxtjs/eslint-module'
+    ],
     router: {
         middleware: 'i18n'
     },
