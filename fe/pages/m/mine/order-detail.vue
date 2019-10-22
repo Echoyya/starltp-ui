@@ -17,7 +17,7 @@
             <p v-if="order.quotePrice">总体报价<span class="maohao">:</span>{{ order.quotePrice }}</p>
             <p v-if="order.customizedOrderItemsDto.orderFilesList.length > 0">附件:
                 <ul class="el-upload-list el-upload-list--text">
-                    <li v-for="item in order.customizedOrderItemsDto.orderFilesList" class="el-upload-list__item">
+                    <li v-for="(item,index) in order.customizedOrderItemsDto.orderFilesList" :key="index" class="el-upload-list__item">
                         <a :href="fileServerUrl+item.fileUrl+'?filename='+item.fileName" class="el-upload-list__item-name" target="_blank" download><i class="el-icon-document"></i>{{item.fileName}}</a>
                     </li>
                 </ul>

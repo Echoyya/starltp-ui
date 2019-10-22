@@ -9,7 +9,7 @@
                     </div>
                     <div class="reg-form">
                         <div class="reg-title">{{$t('register.welcome')}}</div>
-                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
+                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
                             <el-form-item prop="name">
                                 <el-input v-model="ruleForm.name" :placeholder="$t('register.inputUserName')"></el-input>
                             </el-form-item>

@@ -9,7 +9,7 @@
                     </div>
                     <div class="reg-form">
                         <div class="reg-title">{{$t('register.forgetPassword')}}</div>
-                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
+                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
                             <el-form-item style="margin-bottom: 0;float: left; width: 25%">
                                 <el-select v-model="ruleForm.codeNum" :filter-method="filterMethod" filterable placeholder="" @visible-change="visibleChange">
                                     <el-option

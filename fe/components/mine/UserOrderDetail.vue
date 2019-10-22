@@ -13,9 +13,8 @@
             </el-row>
             <el-row>
                 <el-col :span="12">
-                    <p style="display:inline-flex">{{$t('mine.language')}}<span class="maohao">:</span>
+                    {{$t('mine.language')}}<span class="maohao">:</span>
                     <div style="display:inline-flex;max-width:250px;">{{ order.customizedOrderItemsDto.sourceLanguage }} <i class="iconfont">&#xe60c;</i> {{ order.customizedOrderItemsDto.targetLanguages }}</div>
-                    </p>
                 </el-col>
                 <el-col :span="12" >
                     <p>{{$t('mine.businessType')}}<span class="maohao">:</span>{{ order.customizedOrderItemsDto.businessType }}</p>
@@ -101,11 +100,13 @@
     props: {
       'id': {
         type: Number,
-        required: false
+        required: false,
+        default:0
       },
       'setIfShowList': {
         type: Function,
-        required: false
+        required: false,
+        default:null
       }
     },
     data () {

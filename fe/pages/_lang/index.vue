@@ -23,7 +23,6 @@ import banner1 from '~/static/banner-1.jpg'
 import banner2 from '~/static/banner-2.jpg'
 import banner3 from '~/static/banner-3.jpg'
 
-import SwiperBanner from '~/components/index/SwiperBanner'
 import IndexNews from '~/components/index/IndexNews'
 import IndexBusiness from '~/components/index/IndexBusiness'
 import IndexProcedure from '~/components/index/IndexProcedure'
@@ -35,7 +34,6 @@ import IndexFixedBar from '~/components/index/IndexFixedBar'
 export default {
     layout: 'index',
     components: {
-        SwiperBanner,
         IndexBusiness,
         IndexNews,
         IndexProcedure,

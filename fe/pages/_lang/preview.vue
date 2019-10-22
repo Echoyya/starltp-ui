@@ -15,7 +15,6 @@ import banner1 from '~/static/banner-1.jpg'
 import banner2 from '~/static/banner-2.jpg'
 import banner3 from '~/static/banner-3.jpg'
 
-import SwiperBanner from '~/components/index/SwiperBanner'
 import PreviewNews from '~/components/index/PreviewNews'
 import PreviewBusiness from '~/components/index/PreviewBusiness'
 import IndexProcedure from '~/components/index/IndexProcedure'
@@ -26,7 +25,6 @@ import IndexCooperation from '~/components/index/IndexCooperation'
 export default {
   layout: 'preview',
   components: {
-    SwiperBanner,
     PreviewBusiness,
     PreviewNews,
     IndexProcedure,

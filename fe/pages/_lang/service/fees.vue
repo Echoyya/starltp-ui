@@ -34,7 +34,6 @@ import VideoTable from '~/components/fees/VideoTable'
 import ThematicTable from '~/components/fees/ThematicTable'
 import ListenTranslationTable from '~/components/fees/ListenTranslationTable'
 import SimultaneousInterpretationTable from '~/components/fees/SimultaneousInterpretationTable'
-import TransmissionEquipmentRentalTable from '~/components/fees/TransmissionEquipmentRentalTable'
 import DubbingTable from '~/components/fees/DubbingTable'
 
 export default {
@@ -44,7 +43,6 @@ export default {
     ThematicTable,
     ListenTranslationTable,
     SimultaneousInterpretationTable,
-    TransmissionEquipmentRentalTable,
     DubbingTable
   }
 }
