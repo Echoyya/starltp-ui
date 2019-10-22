@@ -7,19 +7,19 @@
             <div class="list">
                 <div id="list1">
                     <ul>
-                        <li v-for="(item,index) in newsList" :key="index">
+                        <li v-for="item in newsList" :key="item.id">
                             <nuxt-link
                                 :to="{ path:$i18n.path('new'), query:{ id: item.id}}"
-                            >{{language === 'CHINESE' ? item.subContents[0].title : item.subContents[1].title}}</nuxt-link>
+                            >{{item.title}}</nuxt-link>
                         </li>
                     </ul>
                 </div>
                 <div id="list2">
                     <ul>
-                        <li v-for="(item,index) in newsList" :key="index">
+                        <li v-for="item in newsList" :key="item.id">
                             <nuxt-link
                                 :to="{ path:$i18n.path('new'), query:{ id: item.id}}"
-                            >{{language === 'CHINESE' ? item.subContents[0].title : item.subContents[1].title}}</nuxt-link>
+                            >{{item.title}}</nuxt-link>
                         </li>
                     </ul>
                 </div>
@@ -29,9 +29,6 @@
 </template>
 
 <script>
-import { getContent } from '../../service/lcmsService'
-let timeout = null
-
 export default {
     data() {
         return {
@@ -40,28 +37,27 @@ export default {
         }
     },
     mounted() {
-        const _this = this
-        this.language = this.$route.path.includes('/en/') ? 'ENGLISH' : 'CHINESE'
-        const params = {
-            page_number: 1,
-            page_size: 999,
-            sort_property: 'SHOWORDER',
-            sort_direction: 'ASC',
-            contentModule: 'LATEST_NEWS',
-            publishStatus: 'PUBLISHED'
-        }
-        getContent(params, function(res) {
-            _this.newsList = res.datas
-            const newsList = document.getElementById('newsList')
-            const list1 = document.getElementById('list1')
-            const list2 = document.getElementById('list2')
-            timeout = setInterval(_this.marquee.bind(_this, newsList, list1, list2), 30)
-            newsList.onmouseout = function() {
-                timeout = setInterval(_this.marquee.bind(_this, newsList, list1, list2), 30)
-            }
-            newsList.onmouseover = function() {
-                clearInterval(timeout)
-            }
+        this.$axios({
+            url: '/cms-service/list?page=1&size=10&type=0',
+            method: 'get'
+        }).then(({ data }) => {
+            this.newsList = data.data.records
+            this.$nextTick(() => {
+                const newsList = document.getElementById('newsList')
+                const list1 = document.getElementById('list1')
+                const list2 = document.getElementById('list2')
+                let timeout = setInterval(() => {
+                    this.marquee(newsList, list1, list2)
+                }, 30)
+                newsList.onmouseout = () => {
+                    timeout = setInterval(() => {
+                        this.marquee(newsList, list1, list2)
+                    }, 30)
+                }
+                newsList.onmouseover = function() {
+                    clearInterval(timeout)
+                }
+            })
         })
     },
     methods: {

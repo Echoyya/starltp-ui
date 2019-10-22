@@ -1,4 +1,3 @@
-// import request from './request.js'
 import axios from 'axios'
 import { MessageBox } from 'element-ui'
 import CryptoJS from 'crypto-js'

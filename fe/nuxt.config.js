@@ -64,6 +64,10 @@ export default {
         {
             src: '~plugins/nuxt-video-player-plugin.js',
             ssr: false
+        },
+        {
+            src: '~plugins/axios.js',
+            ssr: false
         }
     ],
     /*
