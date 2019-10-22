@@ -1,8 +1,8 @@
 <template>
-  <div class="container mine-content clear">
-    <user-nav />
-    <user-info />
-  </div>
+    <div class="container mine-content clear">
+        <user-nav />
+        <user-info />
+    </div>
 </template>
 <script>
 import UserNav from '~/components/mine/UserNav.vue'

@@ -1,39 +1,39 @@
 <template>
-  <div class="container reset">
-    <div class="content">
-      <img src="~static/login_bg.jpg" />
-      <div class="login-body">
-        <div class="login-content">
-          <div class="login-info">
-            <login-ad />
-          </div>
-          <div class="reg-form">
-            <div class="reg-title">{{$t('register.forgetPassword')}}</div>
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
-              <el-form-item prop="email" style="margin-bottom: 0">
-                <el-input v-model="ruleForm.email" :placeholder="$t('register.inputEmail')"></el-input>
-              </el-form-item>
-              <el-form-item style="margin-bottom: 0; clear: both">
-                <div style="float: right;margin: 0 5px 0 auto">
-                  <nuxt-link :to="$i18n.path('forget')">{{$t('register.resetByTel')}}></nuxt-link>
+    <div class="container reset">
+        <div class="content">
+            <img src="~static/login_bg.jpg" />
+            <div class="login-body">
+                <div class="login-content">
+                    <div class="login-info">
+                        <login-ad />
+                    </div>
+                    <div class="reg-form">
+                        <div class="reg-title">{{$t('register.forgetPassword')}}</div>
+                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
+                            <el-form-item prop="email" style="margin-bottom: 0">
+                                <el-input v-model="ruleForm.email" :placeholder="$t('register.inputEmail')"></el-input>
+                            </el-form-item>
+                            <el-form-item style="margin-bottom: 0; clear: both">
+                                <div style="float: right;margin: 0 5px 0 auto">
+                                    <nuxt-link :to="$i18n.path('forget')">{{$t('register.resetByTel')}}></nuxt-link>
+                                </div>
+                            </el-form-item>
+                            <el-form-item prop="verification_code">
+                                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
+                                <img  ref="getImage" class="get-validate" :src="imageGetUrl" @click="getImageCode"/>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="register-btn" @click="submitForm('ruleForm')">{{$t('button.confirm')}}</el-button>
+                            </el-form-item>
+                        </el-form>
+                        <div class="reg-login">
+                            <nuxt-link :to="$i18n.path('loginEmail')">{{$t('register.loginExistAccount')}}</nuxt-link>
+                        </div>
+                    </div>
                 </div>
-              </el-form-item>
-              <el-form-item prop="verification_code">
-                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
-                <img  class="get-validate" @click="getImageCode" :src="imageGetUrl" ref="getImage"/>
-              </el-form-item>
-              <el-form-item>
-                <el-button class="register-btn" @click="submitForm('ruleForm')">{{$t('button.confirm')}}</el-button>
-              </el-form-item>
-            </el-form>
-            <div class="reg-login">
-              <nuxt-link :to="$i18n.path('loginEmail')">{{$t('register.loginExistAccount')}}</nuxt-link>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 <script>
 import LoginAd from '~/components/LoginAd'
@@ -42,6 +42,9 @@ import { MessageBox } from 'element-ui'
 import api from '../../utils/api'
 
 export default {
+  components: {
+    LoginAd
+  },
   data () {
     const checkCode = (rule, value, callback) => {
       const _this = this
@@ -74,14 +77,11 @@ export default {
       }
     }
   },
-  components: {
-    LoginAd
-  },
   methods: {
-    getImageCode: function () {
+    getImageCode () {
       this.$refs.getImage.setAttribute('src', this.imageGetUrl + '?time=' + new Date().getTime())
     },
-    submitForm: function (formName) {
+    submitForm (formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {

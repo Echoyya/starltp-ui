@@ -1,51 +1,51 @@
 <template>
-  <div class="container video">
-    <banner :title="$t('menu.video')" :step="step" :banner="banner" :info="$t('order.videoInfo')"/>
-    <div class="form">
-      <el-form :model="videoForm" :rules="rules" ref="videoForm" :inline-message.boolean="true" label-width="250px" class="form-body">
-        <el-form-item :label="$t('order.chooseLanguage')" prop="language" :rules="languageRules" :required.boolean="true">
-          <el-select v-model="videoForm.language.sourceLanguage">
-            <el-option v-for="item in config.languages" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-          <i class="iconfont">&#xe60c;</i>
-          <el-select v-model="videoForm.language.targetLanguages" :multiple.boolean="true" collapse-tags>
-            <el-option v-for="item in config.languages" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('order.type')" prop="areaOfField" :required.boolean="true">
-          <el-select v-model="videoForm.areaOfField">
-            <el-option v-for="item in config.areaOfField" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('order.title')" prop="title">
-          <el-input v-model="videoForm.title"></el-input>
-        </el-form-item>
-        <el-form-item :label="$t('order.content')" prop="orderFilesList">
-          <star-upload :token="token" :redirect="$i18n.path('video')" :update-files="setUploadFile"/>
-          <input type="hidden" v-model="videoForm.orderFilesList" />
-        </el-form-item>
-        <el-form-item :label="$t('order.scene')" prop="applicationScene" :required.boolean="true">
-          <el-select v-model="videoForm.applicationScene">
-            <el-option v-for="item in config.applicationScene" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('order.deliverDate')" prop="deliverDate">
-          <el-date-picker type="datetime" v-model="videoForm.deliverDate"  :placeholder="$t('order.pickTime')" :picker-options="pickerOptions1" default-time></el-date-picker>
-          <div style="font-size: 12px; line-height:18px;color: #C0C4CC; margin-top: 5px">{{$t('order.deliverDateTip')}}</div>
-        </el-form-item>
-        <el-form-item :label="$t('order.claim')" prop="request">
-          <el-input type="textarea" v-model="videoForm.request" :rows.number="5"></el-input>
-        </el-form-item>
-        <el-form-item class="agreement" prop="read">
-          <el-checkbox v-model="videoForm.read" true-label="true" false-label=""></el-checkbox><span class="agreement-title">{{$t('order.agree')}}<nuxt-link :to="$i18n.path('about/agreement')" target="_blank">{{$t('order.protocol')}}</nuxt-link></span>
-        </el-form-item>
-        <el-form-item>
-          <el-button @click="submitForm('videoForm')" :loading="loading">{{$t('menu.submit')}}</el-button>
-        </el-form-item>
-      </el-form>
+    <div class="container video">
+        <banner :title="$t('menu.video')" :step="step" :banner="banner" :info="$t('order.videoInfo')"/>
+        <div class="form">
+            <el-form ref="videoForm" :model="videoForm" :rules="rules" :inline-message.boolean="true" label-width="250px" class="form-body">
+                <el-form-item :label="$t('order.chooseLanguage')" prop="language" :rules="languageRules" :required.boolean="true">
+                    <el-select v-model="videoForm.language.sourceLanguage">
+                        <el-option v-for="item in config.languages" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                    <i class="iconfont">&#xe60c;</i>
+                    <el-select v-model="videoForm.language.targetLanguages" :multiple.boolean="true" collapse-tags>
+                        <el-option v-for="item in config.languages" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item :label="$t('order.type')" prop="areaOfField" :required.boolean="true">
+                    <el-select v-model="videoForm.areaOfField">
+                        <el-option v-for="item in config.areaOfField" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item :label="$t('order.title')" prop="title">
+                    <el-input v-model="videoForm.title"></el-input>
+                </el-form-item>
+                <el-form-item :label="$t('order.content')" prop="orderFilesList">
+                    <star-upload :token="token" :redirect="$i18n.path('video')" :update-files="setUploadFile"/>
+                    <input v-model="videoForm.orderFilesList" type="hidden" />
+                </el-form-item>
+                <el-form-item :label="$t('order.scene')" prop="applicationScene" :required.boolean="true">
+                    <el-select v-model="videoForm.applicationScene">
+                        <el-option v-for="item in config.applicationScene" v-if="item.video" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item :label="$t('order.deliverDate')" prop="deliverDate">
+                    <el-date-picker v-model="videoForm.deliverDate" type="datetime"  :placeholder="$t('order.pickTime')" :picker-options="pickerOptions1" default-time></el-date-picker>
+                    <div style="font-size: 12px; line-height:18px;color: #C0C4CC; margin-top: 5px">{{$t('order.deliverDateTip')}}</div>
+                </el-form-item>
+                <el-form-item :label="$t('order.claim')" prop="request">
+                    <el-input v-model="videoForm.request" type="textarea" :rows.number="5"></el-input>
+                </el-form-item>
+                <el-form-item class="agreement" prop="read">
+                    <el-checkbox v-model="videoForm.read" true-label="true" false-label=""></el-checkbox><span class="agreement-title">{{$t('order.agree')}}<nuxt-link :to="$i18n.path('about/agreement')" target="_blank">{{$t('order.protocol')}}</nuxt-link></span>
+                </el-form-item>
+                <el-form-item>
+                    <el-button :loading="loading" @click="submitForm('videoForm')">{{$t('menu.submit')}}</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+        <fees-side-bar link='/video-table'/>
     </div>
-    <fees-side-bar link='/video-table'/>
-  </div>
 </template>
 <script>
 import Banner from '~/components/Banner'
@@ -60,7 +60,7 @@ export default {
   data () {
     return {
       loading: false,
-      config: config,
+      config,
       banner: require('~/static/translate-bg1.jpg'),
       pickerOptions1: {
         disabledDate (time) {
@@ -75,7 +75,7 @@ export default {
               callback(new Error(this.$t('order.chooseSource')))
             } else if (value.targetLanguages.length === 0) {
               callback(new Error(this.$t('order.chooseTarget')))
-            } else if (value.targetLanguages.indexOf(value.sourceLanguage) >= 0) {
+            } else if (value.targetLanguages.includes(value.sourceLanguage)) {
               callback(new Error(this.$t('order.languageCheck')))
             } else {
               callback()
@@ -126,11 +126,11 @@ export default {
     ...mapMutations([
       'RESET_VIDEOFORM'
     ]),
-    setUploadFile: function (uid, res, type) {
+    setUploadFile (uid, res, type) {
       if (type === 'add') {
         if (res.successful_files && res.successful_files.length > 0) {
           this.videoForm.orderFilesList.push({
-            uid: uid,
+            uid,
             fileName: res.successful_files[0].original_name,
             fileUrl: res.successful_files[0].resource_url,
             isPublish: false
@@ -143,7 +143,7 @@ export default {
         this.videoForm.orderFilesList.splice(index, 1)
       }
     },
-    submitForm: function (formName) {
+    submitForm (formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {

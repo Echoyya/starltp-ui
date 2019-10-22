@@ -1,88 +1,88 @@
 <template>
-  <div class="container business-content">
-    <div class="vip-banner">
-      <img src="~static/vip-banner.jpg" />
-      <div class="banner-title">{{$t('business.title')}}</div>
+    <div class="container business-content">
+        <div class="vip-banner">
+            <img src="~static/vip-banner.jpg" />
+            <div class="banner-title">{{$t('business.title')}}</div>
+        </div>
+        <div class="vip-tel">
+            <img src="~static/vip.jpg" />
+            <div class="tel-info">
+                <div class="tel-title">{{$t('business.telTitle')}}</div>
+                <div class="tel-detail">{{$t('business.telDesc')}}</div>
+            </div>
+        </div>
+        <div class="vip-service">
+            <div class="index-title">
+                {{$t('business.exclusiveService')}}
+            </div>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-logo">
+                        <img src="~static/vip/1.png" />
+                    </div>
+                    <p>
+                        {{$t('business.exclusiveConsultant')}}
+                    </p>
+                </div>
+                <div class="service-item">
+                    <div class="service-logo" style="padding-top:34px;">
+                        <img src="~static/vip/2.png" />
+                    </div>
+                    <p>
+                        {{$t('business.exclusiveVIP')}}
+                    </p>
+                </div>
+                <div class="service-item">
+                    <div class="service-logo" style="padding-top:45px;">
+                        <img src="~static/vip/3.png" />
+                    </div>
+                    <p>
+                        {{$t('business.authority')}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="vip-user">
+            <div class="index-title">
+                {{$t('business.brandUser')}}
+            </div>
+            <div class="vip-list">
+                <div class="vip-item">
+                    <div class="vip-logo">
+                        <img src="~static/vip/1.jpg" />
+                    </div>
+                    <p>
+                        {{$t('business.RTB')}}
+                    </p>
+                    <p>
+                        <span class="red">"</span>{{$t('business.profession')}}<span class="red">"</span>
+                    </p>
+                </div>
+                <div class="vip-item">
+                    <div class="vip-logo">
+                        <img src="~static/vip/2.jpg" />
+                    </div>
+                    <p>
+                        {{$t('business.bundesliga')}}
+                    </p>
+                    <p>
+                        <span class="red">"</span>{{$t('business.bundesligaDesc')}}<span class="red">"</span>
+                    </p>
+                </div>
+                <div class="vip-item">
+                    <div class="vip-logo">
+                        <img src="~static/vip/3.jpg" />
+                    </div>
+                    <p>
+                        {{$t('business.CCTV')}}
+                    </p>
+                    <p>
+                        <span class="red">"</span>{{$t('business.rigorous')}}<span class="red">"</span>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="vip-tel">
-      <img src="~static/vip.jpg" />
-      <div class="tel-info">
-        <div class="tel-title">{{$t('business.telTitle')}}</div>
-        <div class="tel-detail">{{$t('business.telDesc')}}</div>
-      </div>
-    </div>
-    <div class="vip-service">
-      <div class="index-title">
-        {{$t('business.exclusiveService')}}
-      </div>
-      <div class="service-list">
-        <div class="service-item">
-          <div class="service-logo">
-            <img src="~static/vip/1.png" />
-          </div>
-          <p>
-            {{$t('business.exclusiveConsultant')}}
-          </p>
-        </div>
-        <div class="service-item">
-          <div class="service-logo" style="padding-top:34px;">
-            <img src="~static/vip/2.png" />
-          </div>
-          <p>
-            {{$t('business.exclusiveVIP')}}
-          </p>
-        </div>
-        <div class="service-item">
-          <div class="service-logo" style="padding-top:45px;">
-            <img src="~static/vip/3.png" />
-          </div>
-          <p>
-            {{$t('business.authority')}}
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="vip-user">
-      <div class="index-title">
-        {{$t('business.brandUser')}}
-      </div>
-      <div class="vip-list">
-        <div class="vip-item">
-          <div class="vip-logo">
-            <img src="~static/vip/1.jpg" />
-          </div>
-          <p>
-            {{$t('business.RTB')}}
-          </p>
-          <p>
-            <span class="red">"</span>{{$t('business.profession')}}<span class="red">"</span>
-          </p>
-        </div>
-        <div class="vip-item">
-          <div class="vip-logo">
-              <img src="~static/vip/2.jpg" />
-          </div>
-          <p>
-            {{$t('business.bundesliga')}}
-          </p>
-          <p>
-            <span class="red">"</span>{{$t('business.bundesligaDesc')}}<span class="red">"</span>
-          </p>
-        </div>
-        <div class="vip-item">
-          <div class="vip-logo">
-              <img src="~static/vip/3.jpg" />
-          </div>
-          <p>
-            {{$t('business.CCTV')}}
-          </p>
-          <p>
-            <span class="red">"</span>{{$t('business.rigorous')}}<span class="red">"</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style lang="less">

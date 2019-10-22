@@ -1,51 +1,51 @@
 <template>
-  <div class="container thematic">
-    <banner :title="$t('menu.thematic')" :step="step" :banner="banner" :info="$t('order.thematicInfo')" />
-    <div class="form">
-      <el-form :model="thematicForm" :rules="rules" ref="thematicForm" :inline-message.boolean="true" label-width="250px" class="form-body">
-        <el-form-item :label="$t('order.chooseLanguage')" prop="language" :rules="languageRules" :required.boolean="true">
-          <el-select v-model="thematicForm.language.sourceLanguage">
-            <el-option v-for="item in config.languages" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-          <i class="iconfont">&#xe60c;</i>
-          <el-select v-model="thematicForm.language.targetLanguages" :multiple.boolean="true" collapse-tags>
-            <el-option v-for="item in config.languages" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('order.area')" prop="areaOfField" :required.boolean="true">
-          <el-select v-model="thematicForm.areaOfField">
-            <el-option v-for="item in config.areaOfField" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('order.title')" prop="title">
-          <el-input v-model="thematicForm.title"></el-input>
-        </el-form-item>
-        <el-form-item :label="$t('order.content')" prop="orderFilesList">
-          <input type="hidden" v-model="thematicForm.orderFilesList" />
-          <star-upload :token="token" :redirect="$i18n.path('thematic')" :update-files="setUploadFile" />
-        </el-form-item>
-        <el-form-item :label="$t('order.scene')" prop="applicationScene" :required.boolean="true">
-          <el-select v-model="thematicForm.applicationScene">
-            <el-option v-for="item in config.applicationScene" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('order.deliverDate')" prop="deliverDate">
-          <el-date-picker type="datetime" v-model="thematicForm.deliverDate"  :placeholder="$t('order.pickTime')" style="width: 195px" :picker-options="pickerOptions1" default-time></el-date-picker>
-          <div style="font-size: 12px; line-height:18px;color: #C0C4CC; margin-top: 5px">{{$t('order.deliverDateTip')}}</div>
-        </el-form-item>
-        <el-form-item :label="$t('order.claim')" prop="request">
-          <el-input type="textarea" v-model="thematicForm.request" :rows.number="5"></el-input>
-        </el-form-item>
-        <el-form-item class="agreement" prop="read">
-          <el-checkbox v-model="thematicForm.read" true-label="true" false-label=""></el-checkbox><span class="agreement-title">{{$t('order.agree')}}<nuxt-link :to="$i18n.path('about/agreement')" target="_blank"> {{$t('order.protocol')}} </nuxt-link></span>
-        </el-form-item>
-        <el-form-item>
-          <el-button @click="submitForm('thematicForm')" :loading="loading">{{$t('menu.submit')}}</el-button>
-        </el-form-item>
-      </el-form>
+    <div class="container thematic">
+        <banner :title="$t('menu.thematic')" :step="step" :banner="banner" :info="$t('order.thematicInfo')" />
+        <div class="form">
+            <el-form ref="thematicForm" :model="thematicForm" :rules="rules" :inline-message.boolean="true" label-width="250px" class="form-body">
+                <el-form-item :label="$t('order.chooseLanguage')" prop="language" :rules="languageRules" :required.boolean="true">
+                    <el-select v-model="thematicForm.language.sourceLanguage">
+                        <el-option v-for="item in config.languages" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                    <i class="iconfont">&#xe60c;</i>
+                    <el-select v-model="thematicForm.language.targetLanguages" :multiple.boolean="true" collapse-tags>
+                        <el-option v-for="item in config.languages" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item :label="$t('order.area')" prop="areaOfField" :required.boolean="true">
+                    <el-select v-model="thematicForm.areaOfField">
+                        <el-option v-for="item in config.areaOfField" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item :label="$t('order.title')" prop="title">
+                    <el-input v-model="thematicForm.title"></el-input>
+                </el-form-item>
+                <el-form-item :label="$t('order.content')" prop="orderFilesList">
+                    <input v-model="thematicForm.orderFilesList" type="hidden" />
+                    <star-upload :token="token" :redirect="$i18n.path('thematic')" :update-files="setUploadFile" />
+                </el-form-item>
+                <el-form-item :label="$t('order.scene')" prop="applicationScene" :required.boolean="true">
+                    <el-select v-model="thematicForm.applicationScene">
+                        <el-option v-for="item in config.applicationScene" v-if="item.thematic" :key="item.value" :label="$t(item.label)" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item :label="$t('order.deliverDate')" prop="deliverDate">
+                    <el-date-picker v-model="thematicForm.deliverDate" type="datetime"  :placeholder="$t('order.pickTime')" style="width: 195px" :picker-options="pickerOptions1" default-time></el-date-picker>
+                    <div style="font-size: 12px; line-height:18px;color: #C0C4CC; margin-top: 5px">{{$t('order.deliverDateTip')}}</div>
+                </el-form-item>
+                <el-form-item :label="$t('order.claim')" prop="request">
+                    <el-input v-model="thematicForm.request" type="textarea" :rows.number="5"></el-input>
+                </el-form-item>
+                <el-form-item class="agreement" prop="read">
+                    <el-checkbox v-model="thematicForm.read" true-label="true" false-label=""></el-checkbox><span class="agreement-title">{{$t('order.agree')}}<nuxt-link :to="$i18n.path('about/agreement')" target="_blank"> {{$t('order.protocol')}} </nuxt-link></span>
+                </el-form-item>
+                <el-form-item>
+                    <el-button :loading="loading" @click="submitForm('thematicForm')">{{$t('menu.submit')}}</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+        <fees-side-bar link="thematic-table" />
     </div>
-    <fees-side-bar link="thematic-table" />
-  </div>
 </template>
 <script>
 import Banner from '~/components/Banner'
@@ -59,7 +59,7 @@ export default {
   data () {
     return {
       loading: false,
-      config: config,
+      config,
       banner: require('~/static/translate-bg2.jpg'),
       pickerOptions1: {
         disabledDate (time) {
@@ -74,7 +74,7 @@ export default {
               callback(new Error(this.$t('order.chooseSource')))
             } else if (value.targetLanguages.length === 0) {
               callback(new Error(this.$t('order.chooseTarget')))
-            } else if (value.targetLanguages.indexOf(value.sourceLanguage) >= 0) {
+            } else if (value.targetLanguages.includes(value.sourceLanguage)) {
               callback(new Error(this.$t('order.languageCheck')))
             } else {
               callback()
@@ -127,11 +127,11 @@ export default {
     ...mapMutations([
       'RESET_THEMATICFORM'
     ]),
-    setUploadFile: function (uid, res, type) {
+    setUploadFile (uid, res, type) {
       if (type === 'add') {
         if (res.successful_files && res.successful_files.length > 0) {
           this.thematicForm.orderFilesList.push({
-            uid: uid,
+            uid,
             fileName: res.successful_files[0].original_name,
             fileUrl: res.successful_files[0].resource_url,
             isPublish: false
@@ -144,7 +144,7 @@ export default {
         this.thematicForm.orderFilesList.splice(index, 1)
       }
     },
-    submitForm: function (formName) {
+    submitForm (formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {

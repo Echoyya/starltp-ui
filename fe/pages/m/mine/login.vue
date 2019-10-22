@@ -1,11 +1,11 @@
 <template>
-<div class="container m-login">
-  <div class="m-logo"><img src="~assets/m_logo.png" /></div>
-  <div class="login-error">{{error}}</div>
-  <m-login v-if="type==='login'" :changeType="changeType" :changeError="changeError"/>
-  <m-register v-if="type==='register'" :changeType="changeType" :changeError="changeError"/>
-  <m-forget v-if="type==='forget'" :changeType="changeType" :changeError="changeError"/>
-</div>
+    <div class="container m-login">
+        <div class="m-logo"><img src="~assets/m_logo.png" /></div>
+        <div class="login-error">{{error}}</div>
+        <m-login v-if="type==='login'" :change-type="changeType" :change-error="changeError"/>
+        <m-register v-if="type==='register'" :change-type="changeType" :change-error="changeError"/>
+        <m-forget v-if="type==='forget'" :change-type="changeType" :change-error="changeError"/>
+    </div>
 </template>
 
 <script>
@@ -15,20 +15,20 @@ import MForget from '~/components/mobile/MForget'
 
 export default {
   layout: 'mobile-nobar',
+  components: {
+    MLogin, MRegister, MForget
+  },
   data () {
     return {
       type: 'login',
       error: ''
     }
   },
-  components: {
-    MLogin, MRegister, MForget
-  },
   methods: {
-    changeType: function (key) {
+    changeType (key) {
       this.type = key
     },
-    changeError: function (error) {
+    changeError (error) {
       this.error = error
     }
   }

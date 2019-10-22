@@ -1,20 +1,20 @@
 <template>
-<div class="container m-mine-password">
-  <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="form-body">
-    <el-form-item prop="original_password">
-      <el-input type="password" v-model="ruleForm.original_password" placeholder="请输入原密码"></el-input>
-    </el-form-item>
-    <el-form-item prop="new_password">
-      <el-input type="password" v-model="ruleForm.new_password" placeholder="请输入新密码"></el-input>
-    </el-form-item>
-    <el-form-item prop="confirm_password">
-      <el-input type="password" v-model="ruleForm.confirm_password" placeholder="请输入确认密码"></el-input>
-    </el-form-item>
-  </el-form>
-  <div class="button-item">
-    <button class="m-button" @click="submitForm('ruleForm')">确定</button>
-  </div>
-</div>
+    <div class="container m-mine-password">
+        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="form-body">
+            <el-form-item prop="original_password">
+                <el-input v-model="ruleForm.original_password" type="password" placeholder="请输入原密码"></el-input>
+            </el-form-item>
+            <el-form-item prop="new_password">
+                <el-input v-model="ruleForm.new_password" type="password" placeholder="请输入新密码"></el-input>
+            </el-form-item>
+            <el-form-item prop="confirm_password">
+                <el-input v-model="ruleForm.confirm_password" type="password" placeholder="请输入确认密码"></el-input>
+            </el-form-item>
+        </el-form>
+        <div class="button-item">
+            <button class="m-button" @click="submitForm('ruleForm')">确定</button>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -63,7 +63,7 @@ export default {
     ])
   },
   methods: {
-    submitForm: function (formName) {
+    submitForm (formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {

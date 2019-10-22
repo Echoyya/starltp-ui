@@ -15,7 +15,7 @@
         "start": "nuxt start",
         "buildserver": "nuxt build",
         "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-        "lintfix": "eslint --fix --ext .js,.vue ./layouts/",
+        "lintfix": "eslint --fix --ext .js,.vue ./pages/",
         "zipimg": "gulp imgzip",
         "sprite": "gulp sprite"
     },

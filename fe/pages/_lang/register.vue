@@ -1,58 +1,58 @@
 <template>
-  <div class="container register">
-    <div class="content">
-      <img src="~static/login_bg.jpg" />
-      <div class="login-body">
-        <div class="login-content">
-          <div class="login-info">
-            <login-ad />
-          </div>
-          <div class="reg-form">
-            <div class="reg-title">{{$t('register.welcome')}}</div>
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
-              <el-form-item prop="name">
-                <el-input v-model="ruleForm.name" :placeholder="$t('register.inputUserName')"></el-input>
-              </el-form-item>
-              <el-form-item style="margin-bottom: 0;float: left; width: 25%">
-                <el-select v-model="ruleForm.codeNum" :filter-method="filterMethod" filterable placeholder="" @visible-change="visibleChange">
-                  <el-option
-                    style="width: 274px;"
-                    v-for="item in countriesKeys"
-                    :key="item"
-                    :label="countryConfig[item]"
-                    :value="countryConfig[item]">
-                    <span style="float: left">{{ $t(countries[item]) }}</span>
-                    <span style="float: right; color: #8492a6; font-size: 13px">{{ countryConfig[item] }}</span>
-                  </el-option>
-                </el-select>
-              </el-form-item>
-              <el-form-item prop="phone_number" style="margin-bottom: 0;float: right; width: 73%">
-                <el-input v-model="ruleForm.phone_number" :placeholder="$t('register.inputTelNum')"></el-input>
-              </el-form-item>
-              <el-form-item style="margin-bottom: 0; clear: both">
-                <div style="float: right;margin: 0 5px 0 auto">
-                  <nuxt-link :to="{path:$i18n.path('registerEmail'), query:{redirect: redirect}}">{{$t('register.registerEmail')}}></nuxt-link>
+    <div class="container register">
+        <div class="content">
+            <img src="~static/login_bg.jpg" />
+            <div class="login-body">
+                <div class="login-content">
+                    <div class="login-info">
+                        <login-ad />
+                    </div>
+                    <div class="reg-form">
+                        <div class="reg-title">{{$t('register.welcome')}}</div>
+                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
+                            <el-form-item prop="name">
+                                <el-input v-model="ruleForm.name" :placeholder="$t('register.inputUserName')"></el-input>
+                            </el-form-item>
+                            <el-form-item style="margin-bottom: 0;float: left; width: 25%">
+                                <el-select v-model="ruleForm.codeNum" :filter-method="filterMethod" filterable placeholder="" @visible-change="visibleChange">
+                                    <el-option
+                                        v-for="item in countriesKeys"
+                                        :key="item"
+                                        style="width: 274px;"
+                                        :label="countryConfig[item]"
+                                        :value="countryConfig[item]">
+                                        <span style="float: left">{{ $t(countries[item]) }}</span>
+                                        <span style="float: right; color: #8492a6; font-size: 13px">{{ countryConfig[item] }}</span>
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item prop="phone_number" style="margin-bottom: 0;float: right; width: 73%">
+                                <el-input v-model="ruleForm.phone_number" :placeholder="$t('register.inputTelNum')"></el-input>
+                            </el-form-item>
+                            <el-form-item style="margin-bottom: 0; clear: both">
+                                <div style="float: right;margin: 0 5px 0 auto">
+                                    <nuxt-link :to="{path:$i18n.path('registerEmail'), query:{redirect: redirect}}">{{$t('register.registerEmail')}}></nuxt-link>
+                                </div>
+                            </el-form-item>
+                            <el-form-item prop="password">
+                                <el-input v-model="ruleForm.password" type="password" :placeholder="$t('register.inputPassword')"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="verification_code">
+                                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
+                                <el-button class="get-validate" :disabled="sendMsgDisabled" @click="getCode">{{$t('register.getVerificationCode')}}{{ countdown === 0 ? '' : countdown + 's' }}</el-button>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="register-btn" :loading="loading" @click="submitForm('ruleForm')">{{$t('button.register')}}</el-button>
+                            </el-form-item>
+                        </el-form>
+                        <div class="reg-login">
+                            <nuxt-link :to="{path:$i18n.path('login'), query:{redirect: redirect}}">{{$t('register.loginExistAccount')}}></nuxt-link>
+                        </div>
+                    </div>
                 </div>
-              </el-form-item>
-              <el-form-item prop="password">
-                <el-input type="password" v-model="ruleForm.password" :placeholder="$t('register.inputPassword')"></el-input>
-              </el-form-item>
-              <el-form-item prop="verification_code">
-                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
-                <el-button class="get-validate" @click="getCode" :disabled="sendMsgDisabled">{{$t('register.getVerificationCode')}}{{ countdown === 0 ? '' : countdown + 's' }}</el-button>
-              </el-form-item>
-              <el-form-item>
-                <el-button class="register-btn" @click="submitForm('ruleForm')" :loading="loading">{{$t('button.register')}}</el-button>
-              </el-form-item>
-            </el-form>
-            <div class="reg-login">
-              <nuxt-link :to="{path:$i18n.path('login'), query:{redirect: redirect}}">{{$t('register.loginExistAccount')}}></nuxt-link>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 <script>
 import LoginAd from '~/components/LoginAd'
@@ -66,6 +66,9 @@ import api from '../../utils/api'
 const phoneValidate = /^\d{1,30}$/
 
 export default {
+  components: {
+    LoginAd
+  },
   data () {
     return {
       redirect: '/',
@@ -74,7 +77,7 @@ export default {
       loading: false,
       countriesKeys: Object.keys(this.$t('countries')),
       countries: this.$t('countries'),
-      countryConfig: countryConfig,
+      countryConfig,
       ruleForm: {
         name: '',
         phone_number: '',
@@ -102,32 +105,29 @@ export default {
       }
     }
   },
-  components: {
-    LoginAd
+  watch: {
+    'ruleForm.name' () {
+      this.canSendCode()
+    },
+    'ruleForm.phone_number' () {
+      this.canSendCode()
+    }
   },
   mounted () {
     this.redirect = this.$route.query.redirect ? this.$route.query.redirect : this.$i18n.path('')
     sessionStorage.clear()
   },
-  watch: {
-    'ruleForm.name': function () {
-      this.canSendCode()
-    },
-    'ruleForm.phone_number': function () {
-      this.canSendCode()
-    }
-  },
   methods: {
     ...mapMutations([
       'SET_BASEINFO'
     ]),
-    filterMethod: function (query) {
+    filterMethod (query) {
       if (query !== '') {
-        let countries = Object.entries(this.$t('countries'))
-        let countriesKeys = []
+        const countries = Object.entries(this.$t('countries'))
+        const countriesKeys = []
         countries.map(([k, v]) => {
-          let searchStr = v + countryConfig[k]
-          if (searchStr.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+          const searchStr = v + countryConfig[k]
+          if (searchStr.toLowerCase().includes(query.toLowerCase())) {
             countriesKeys.push(k)
           }
         })
@@ -136,19 +136,19 @@ export default {
         this.countriesKeys = Object.keys(this.$t('countries'))
       }
     },
-    visibleChange: function (value) {
+    visibleChange (value) {
       if (value) {
         this.countriesKeys = Object.keys(this.$t('countries'))
       }
     },
-    canSendCode: function () {
+    canSendCode () {
       if (this.ruleForm.name.length <= 30 && this.ruleForm.name.length >= 1 && phoneValidate.test(this.ruleForm.phone_number)) {
         this.sendMsgDisabled = false
       } else {
         this.sendMsgDisabled = true
       }
     },
-    getCode: function () {
+    getCode () {
       const _this = this
       _this.sendMsgDisabled = true
       _this.countdown = 60
@@ -157,7 +157,7 @@ export default {
         phone_number: this.ruleForm.codeNum.concat(this.ruleForm.phone_number)
       })
     },
-    setCountdown: function () {
+    setCountdown () {
       if (this.countdown > 0) {
         this.sendMsgDisabled = true
         this.countdown--
@@ -166,7 +166,7 @@ export default {
         this.sendMsgDisabled = false
       }
     },
-    submitForm: function (formName) {
+    submitForm (formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -183,7 +183,7 @@ export default {
                 const _info = CryptoJS.AES.encrypt(_res, 'startimes ltp')
                 utils.setSession('_info', _info.toString())
                 _this.SET_BASEINFO({ ...res })
-                if (_this.redirect.indexOf('translator') > -1) {
+                if (_this.redirect.includes('translator')) {
                   utils.toTranslator(api.translatorsiteURL)
                 } else {
                   _this.$router.push({ path: _this.redirect })

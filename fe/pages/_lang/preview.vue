@@ -1,13 +1,13 @@
 <template>
-<div class="container index">
-  <video id="video" src="https://newtranstar.oss-cn-beijing.aliyuncs.com/index-v/index2.mp4" preload="auto" loop="loop" width="100%" poster="~static/video/video1.jpg"></video>
-  <preview-news></preview-news>
-  <preview-business></preview-business>
-  <index-procedure></index-procedure>
-  <index-advantage></index-advantage>
-  <preview-case></preview-case>
-  <index-cooperation></index-cooperation>
-</div>
+    <div class="container index">
+        <video id="video" src="https://newtranstar.oss-cn-beijing.aliyuncs.com/index-v/index2.mp4" preload="auto" loop="loop" width="100%" poster="~static/video/video1.jpg"></video>
+        <preview-news></preview-news>
+        <preview-business></preview-business>
+        <index-procedure></index-procedure>
+        <index-advantage></index-advantage>
+        <preview-case></preview-case>
+        <index-cooperation></index-cooperation>
+    </div>
 </template>
 
 <script>
@@ -25,6 +25,15 @@ import IndexCooperation from '~/components/index/IndexCooperation'
 
 export default {
   layout: 'preview',
+  components: {
+    SwiperBanner,
+    PreviewBusiness,
+    PreviewNews,
+    IndexProcedure,
+    IndexAdvantage,
+    PreviewCase,
+    IndexCooperation
+  },
   data () {
     return {
       carousel_height: 0,
@@ -40,15 +49,6 @@ export default {
         }
       ]
     }
-  },
-  components: {
-    SwiperBanner,
-    PreviewBusiness,
-    PreviewNews,
-    IndexProcedure,
-    IndexAdvantage,
-    PreviewCase,
-    IndexCooperation
   },
   mounted () {
     document.getElementById('video').play()

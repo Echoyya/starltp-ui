@@ -34,6 +34,16 @@ import IndexFixedBar from '~/components/index/IndexFixedBar'
 
 export default {
     layout: 'index',
+    components: {
+        SwiperBanner,
+        IndexBusiness,
+        IndexNews,
+        IndexProcedure,
+        IndexAdvantage,
+        IndexCase,
+        IndexCooperation,
+        IndexFixedBar
+    },
     data() {
         return {
             carousel_height: 0,
@@ -50,22 +60,12 @@ export default {
             ]
         }
     },
-    components: {
-        SwiperBanner,
-        IndexBusiness,
-        IndexNews,
-        IndexProcedure,
-        IndexAdvantage,
-        IndexCase,
-        IndexCooperation,
-        IndexFixedBar
-    },
     mounted() {
         this.videoPlay()
     },
     methods: {
-        videoPlay: function() {
-            var video = document.getElementById('video')
+        videoPlay() {
+            const video = document.getElementById('video')
             video.onloadedmetadata = function() {
                 video.play()
             }

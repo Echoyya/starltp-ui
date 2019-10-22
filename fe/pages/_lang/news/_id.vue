@@ -1,25 +1,33 @@
 <template>
-  <div class="news content">
-    <h3 class="title">{{news.title}}</h3>
-    <div class="info">
-      <span class="date">{{news.date}}</span>
-      <span class="author">{{news.author}}</span>
+    <div class="news content">
+        <h3 class="title">{{news.title}}</h3>
+        <div class="info">
+            <span class="date">{{news.date}}</span>
+            <span class="author">{{news.author}}</span>
+        </div>
+        <div class="detail">
+            <template v-for="item in news.content">
+                <p v-if="item.indexOf('img:')>=0" class="img">
+                    <img :src="item | getImgSrc" />
+                    <span>{{item | getImgDesc}}</span>
+                </p>
+                <p v-else class="text">{{item}}</p>
+            </template>
+        </div>
     </div>
-    <div class="detail">
-      <template v-for="item in news.content">
-        <p v-if="item.indexOf('img:')>=0" class="img">
-          <img :src="item | getImgSrc" />
-          <span>{{item | getImgDesc}}</span>
-        </p>
-        <p v-else class="text">{{item}}</p>
-      </template>
-    </div>
-  </div>
 </template>
 
 <script>
 export default {
   layout: 'static',
+  filters: {
+    getImgSrc (value) {
+      return value.split(':')[1]
+    },
+    getImgDesc (value) {
+      return value.split(':')[2]
+    }
+  },
   data () {
     return {
       news: {
@@ -32,14 +40,6 @@ export default {
   },
   created () {
     this.news = this.$t('news.' + this.$route.params.id)
-  },
-  filters: {
-    getImgSrc: function (value) {
-      return value.split(':')[1]
-    },
-    getImgDesc: function (value) {
-      return value.split(':')[2]
-    }
   }
 }
 </script>

@@ -1,29 +1,29 @@
 <template>
-<div class="container m-mine-detail">
-  <div v-if="order" class="order-detail">
-    <p class="order-title">{{ order.title }}</p>
-    <p>订单编号<span class="maohao">:</span>{{ order.orderNumber }}</p>
-    <p>语言<span class="maohao">:</span>{{ order.customizedOrderItemsDto.sourceLanguage }} <i class="iconfont">&#xe60c;</i> {{ order.customizedOrderItemsDto.targetLanguages }}</p>
-    <p>业务类型<span class="maohao">:</span>{{ order.customizedOrderItemsDto.businessType }}</p>
-    <p>领域范围<span class="maohao">:</span>{{ order.customizedOrderItemsDto.areaOfField }}</p>
-    <p v-if="order.customizedOrderItemsDto.applicationScene">应用场景<span class="maohao">:</span>{{ order.customizedOrderItemsDto.applicationScene }}</p>
-    <p v-if="order.customizedOrderItemsDto.translationContent">译制内容<span class="maohao">:</span>{{ order.customizedOrderItemsDto.translationContent }}</p>
-    <p>译制要求<span class="maohao">:</span>{{ order.customizedOrderItemsDto.request }}</p>
-    <p v-if="order.customizedOrderItemsDto.workPlace">工作地点<span class="maohao">:</span>{{ order.customizedOrderItemsDto.workPlace }}</p>
-    <p v-if="order.customizedOrderItemsDto.beginTime">时间范围<span class="maohao">:</span>{{ order.customizedOrderItemsDto.beginTime }} - {{order.customizedOrderItemsDto.endTime}}</p>
-    <p>进展情况<span class="maohao">:</span>{{ order.orderStatus }}</p>
-    <p>下单时间<span class="maohao">:</span>{{ order.orderTime }}</p>
-    <p v-if="order.customizedOrderItemsDto.deliverDate">完成时间<span class="maohao">:</span>{{ order.customizedOrderItemsDto.deliverDate }}</p>
-    <p v-if="order.quotePrice">总体报价<span class="maohao">:</span>{{ order.quotePrice }}</p>
-    <p v-if="order.customizedOrderItemsDto.orderFilesList.length > 0">附件:
-    <ul class="el-upload-list el-upload-list--text">
-      <li class="el-upload-list__item" v-for="item in order.customizedOrderItemsDto.orderFilesList">
-        <a :href="fileServerUrl+item.fileUrl+'?filename='+item.fileName" class="el-upload-list__item-name" target="_blank" download><i class="el-icon-document"></i>{{item.fileName}}</a>
-      </li>
-    </ul>
-    </p>
-  </div>
-</div>
+    <div class="container m-mine-detail">
+        <div v-if="order" class="order-detail">
+            <p class="order-title">{{ order.title }}</p>
+            <p>订单编号<span class="maohao">:</span>{{ order.orderNumber }}</p>
+            <p>语言<span class="maohao">:</span>{{ order.customizedOrderItemsDto.sourceLanguage }} <i class="iconfont">&#xe60c;</i> {{ order.customizedOrderItemsDto.targetLanguages }}</p>
+            <p>业务类型<span class="maohao">:</span>{{ order.customizedOrderItemsDto.businessType }}</p>
+            <p>领域范围<span class="maohao">:</span>{{ order.customizedOrderItemsDto.areaOfField }}</p>
+            <p v-if="order.customizedOrderItemsDto.applicationScene">应用场景<span class="maohao">:</span>{{ order.customizedOrderItemsDto.applicationScene }}</p>
+            <p v-if="order.customizedOrderItemsDto.translationContent">译制内容<span class="maohao">:</span>{{ order.customizedOrderItemsDto.translationContent }}</p>
+            <p>译制要求<span class="maohao">:</span>{{ order.customizedOrderItemsDto.request }}</p>
+            <p v-if="order.customizedOrderItemsDto.workPlace">工作地点<span class="maohao">:</span>{{ order.customizedOrderItemsDto.workPlace }}</p>
+            <p v-if="order.customizedOrderItemsDto.beginTime">时间范围<span class="maohao">:</span>{{ order.customizedOrderItemsDto.beginTime }} - {{order.customizedOrderItemsDto.endTime}}</p>
+            <p>进展情况<span class="maohao">:</span>{{ order.orderStatus }}</p>
+            <p>下单时间<span class="maohao">:</span>{{ order.orderTime }}</p>
+            <p v-if="order.customizedOrderItemsDto.deliverDate">完成时间<span class="maohao">:</span>{{ order.customizedOrderItemsDto.deliverDate }}</p>
+            <p v-if="order.quotePrice">总体报价<span class="maohao">:</span>{{ order.quotePrice }}</p>
+            <p v-if="order.customizedOrderItemsDto.orderFilesList.length > 0">附件:
+                <ul class="el-upload-list el-upload-list--text">
+                    <li v-for="item in order.customizedOrderItemsDto.orderFilesList" class="el-upload-list__item">
+                        <a :href="fileServerUrl+item.fileUrl+'?filename='+item.fileName" class="el-upload-list__item-name" target="_blank" download><i class="el-icon-document"></i>{{item.fileName}}</a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -36,6 +36,17 @@ import api from '../../../utils/api'
 export default {
   layout: 'mobile',
   middleware: 'auth',
+  data () {
+    return {
+      order: null,
+      orderStatus: {},
+      languages: {},
+      areaOfField: {},
+      applicationScene: {},
+      businessType: {},
+      fileServerUrl: api.baseUrl
+    }
+  },
   mounted () {
     if (process.browser) {
       const _this = this
@@ -74,19 +85,8 @@ export default {
       })
     }
   },
-  data () {
-    return {
-      order: null,
-      orderStatus: {},
-      languages: {},
-      areaOfField: {},
-      applicationScene: {},
-      businessType: {},
-      fileServerUrl: api.baseUrl
-    }
-  },
   methods: {
-    formatConfig: function () {
+    formatConfig () {
       for (let i = 0; i < config.orderStatus.length; i++) {
         this.orderStatus[config.orderStatus[i].value] = config.orderStatus[i].label
       }

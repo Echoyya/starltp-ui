@@ -1,93 +1,93 @@
 <template>
-<div class="container m-index">
-  <img src="~assets/m_index_bg.jpg" />
-  <div class="bussiness">
-    <div class="index-title">我们的业务</div>
-    <div class="body">
-      <div class="item">
-        <i class="iconfont">&#xe64c;</i>
-        <div class="content">
-          <h3>影视译制</h3>
-          <p>{{$t('index.business.video')}}</p>
+    <div class="container m-index">
+        <img src="~assets/m_index_bg.jpg" />
+        <div class="bussiness">
+            <div class="index-title">我们的业务</div>
+            <div class="body">
+                <div class="item">
+                    <i class="iconfont">&#xe64c;</i>
+                    <div class="content">
+                        <h3>影视译制</h3>
+                        <p>{{$t('index.business.video')}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="iconfont">&#xe6f9;</i>
+                    <div class="content">
+                        <h3>专题翻译</h3>
+                        <p>{{$t('index.business.thematic')}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="iconfont">&#xe631;</i>
+                    <div class="content">
+                        <h3>口译服务</h3>
+                        <p>{{$t('index.business.interpretation')}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="iconfont">&#xe60d;</i>
+                    <div class="content">
+                        <h3>配音服务</h3>
+                        <p>{{$t('index.business.dubbing')}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="item">
-        <i class="iconfont">&#xe6f9;</i>
-        <div class="content">
-          <h3>专题翻译</h3>
-          <p>{{$t('index.business.thematic')}}</p>
+        <div class="procedure">
+            <div class="index-title">
+                我们的流程
+            </div>
+            <img src="~/static/step1-5.png" class="step" />
         </div>
-      </div>
-      <div class="item">
-        <i class="iconfont">&#xe631;</i>
-        <div class="content">
-          <h3>口译服务</h3>
-          <p>{{$t('index.business.interpretation')}}</p>
+        <div class="advantage">
+            <div class="index-title">
+                我们的优势
+            </div>
+            <div class="body">
+                <div class="item">
+                    <i class="iconfont">&#xe61a;</i>
+                    <div class="content">
+                        <h3>{{$t('index.advantage.item1')}}</h3>
+                        <p>{{$t('index.advantage.item11')}}</p>
+                        <p>{{$t('index.advantage.item12')}}</p>
+                        <p>{{$t('index.advantage.item13')}}</p>
+                        <p>{{$t('index.advantage.item14')}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="iconfont">&#xe648;</i>
+                    <div class="content">
+                        <h3>{{$t('index.advantage.item2')}}</h3>
+                        <p>{{$t('index.advantage.item21')}}</p>
+                        <p>{{$t('index.advantage.item22')}}</p>
+                        <p>{{$t('index.advantage.item23')}}</p>
+                        <p>{{$t('index.advantage.item24')}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="iconfont">&#xe796;</i>
+                    <div class="content">
+                        <h3>{{$t('index.advantage.item3')}}</h3>
+                        <p>{{$t('index.advantage.item31')}}</p>
+                        <p>{{$t('index.advantage.item32')}}</p>
+                        <p>{{$t('index.advantage.item33')}}</p>
+                        <p>{{$t('index.advantage.item34')}}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="iconfont">&#xe6bb;</i>
+                    <div class="content">
+                        <h3>{{$t('index.advantage.item4')}}</h3>
+                        <p>{{$t('index.advantage.item41')}}</p>
+                        <p>{{$t('index.advantage.item42')}}</p>
+                        <p>{{$t('index.advantage.item43')}}</p>
+                        <p>{{$t('index.advantage.item44')}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="item">
-        <i class="iconfont">&#xe60d;</i>
-        <div class="content">
-          <h3>配音服务</h3>
-          <p>{{$t('index.business.dubbing')}}</p>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="procedure">
-    <div class="index-title">
-      我们的流程
-    </div>
-    <img src="~/static/step1-5.png" class="step" />
-  </div>
-  <div class="advantage">
-    <div class="index-title">
-      我们的优势
-    </div>
-    <div class="body">
-      <div class="item">
-        <i class="iconfont">&#xe61a;</i>
-        <div class="content">
-          <h3>{{$t('index.advantage.item1')}}</h3>
-          <p>{{$t('index.advantage.item11')}}</p>
-          <p>{{$t('index.advantage.item12')}}</p>
-          <p>{{$t('index.advantage.item13')}}</p>
-          <p>{{$t('index.advantage.item14')}}</p>
-        </div>
-      </div>
-      <div class="item">
-        <i class="iconfont">&#xe648;</i>
-        <div class="content">
-          <h3>{{$t('index.advantage.item2')}}</h3>
-          <p>{{$t('index.advantage.item21')}}</p>
-          <p>{{$t('index.advantage.item22')}}</p>
-          <p>{{$t('index.advantage.item23')}}</p>
-          <p>{{$t('index.advantage.item24')}}</p>
-        </div>
-      </div>
-      <div class="item">
-        <i class="iconfont">&#xe796;</i>
-        <div class="content">
-          <h3>{{$t('index.advantage.item3')}}</h3>
-          <p>{{$t('index.advantage.item31')}}</p>
-          <p>{{$t('index.advantage.item32')}}</p>
-          <p>{{$t('index.advantage.item33')}}</p>
-          <p>{{$t('index.advantage.item34')}}</p>
-        </div>
-      </div>
-      <div class="item">
-        <i class="iconfont">&#xe6bb;</i>
-        <div class="content">
-          <h3>{{$t('index.advantage.item4')}}</h3>
-          <p>{{$t('index.advantage.item41')}}</p>
-          <p>{{$t('index.advantage.item42')}}</p>
-          <p>{{$t('index.advantage.item43')}}</p>
-          <p>{{$t('index.advantage.item44')}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </template>
 
 <script>

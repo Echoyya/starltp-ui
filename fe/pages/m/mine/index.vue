@@ -1,26 +1,26 @@
 <template>
-<div class="container m-mine">
-  <div class="header">
-    <img class="banner" src="~assets/m_mine_bg.jpg" />
-    <div class="userinfo">
-      <div class="avater">
-        <img src="~static/default.jpg" />
-      </div>
-      <div class="name">
-        <p>{{name}} <!--span class="edit"><i class="iconfont bianji">&#xe602;</i></span--></p>
-        <p>注册时间：{{create_time}}</p>
-      </div>
+    <div class="container m-mine">
+        <div class="header">
+            <img class="banner" src="~assets/m_mine_bg.jpg" />
+            <div class="userinfo">
+                <div class="avater">
+                    <img src="~static/default.jpg" />
+                </div>
+                <div class="name">
+                    <p>{{name}} <!--span class="edit"><i class="iconfont bianji">&#xe602;</i></span--></p>
+                    <p>注册时间：{{create_time}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="mine-link">
+            <ul class="menu-list">
+                <nuxt-link class="mine-menu-item" tag="li" :to="'/m/mine/info'" ><a><i class="iconfont">&#xe687;</i><span>基本信息</span><i class="iconfont more">&#xe615;</i></a></nuxt-link>
+                <nuxt-link class="mine-menu-item" tag="li" :to="'/m/mine/order-list'" ><a><i class="iconfont">&#xe666;</i><span>订单信息</span><i class="iconfont more">&#xe615;</i></a></nuxt-link>
+                <nuxt-link class="mine-menu-item" tag="li" :to="'/m/mine/password'" ><a><i class="iconfont">&#xe685;</i><span>修改密码</span><i class="iconfont more">&#xe615;</i></a></nuxt-link>
+                <li class="mine-menu-item" @click="logout"><a><i class="iconfont">&#xe652;</i><span>退出</span><i class="iconfont more">&#xe615;</i></a></li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <div class="mine-link">
-    <ul class="menu-list">
-      <nuxt-link class="mine-menu-item" tag="li" :to="'/m/mine/info'" ><a><i class="iconfont">&#xe687;</i><span>基本信息</span><i class="iconfont more">&#xe615;</i></a></nuxt-link>
-      <nuxt-link class="mine-menu-item" tag="li" :to="'/m/mine/order-list'" ><a><i class="iconfont">&#xe666;</i><span>订单信息</span><i class="iconfont more">&#xe615;</i></a></nuxt-link>
-      <nuxt-link class="mine-menu-item" tag="li" :to="'/m/mine/password'" ><a><i class="iconfont">&#xe685;</i><span>修改密码</span><i class="iconfont more">&#xe615;</i></a></nuxt-link>
-      <li class="mine-menu-item" @click="logout"><a><i class="iconfont">&#xe652;</i><span>退出</span><i class="iconfont more">&#xe615;</i></a></li>
-    </ul>
-  </div>
-</div>
 </template>
 
 <script>
@@ -56,10 +56,10 @@ export default {
     ...mapMutations([
       'SET_BASEINFO'
     ]),
-    logout: function () {
+    logout () {
       sessionStorage.clear()
       this.SET_BASEINFO({ token: '', name: '', phone_number: '' })
-      if (location.href.indexOf('/mine') >= 0) {
+      if (location.href.includes('/mine')) {
         location.href = '/m'
       }
     }

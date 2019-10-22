@@ -1,62 +1,62 @@
 <template>
-  <div class="container login">
-    <div class="content">
-      <img src="~static/login_bg.jpg" />
-      <div class="login-body">
-        <div class="login-content">
-          <div class="login-info">
-            <login-ad />
-          </div>
-          <div class="login-form">
-            <div class="login-title">{{$t('register.welcomeLogin')}}</div>
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
-              <el-form-item style="margin-bottom: 0;float: left; width: 25%">
-                <el-select v-model="ruleForm.codeNum"  :filter-method="filterMethod" filterable placeholder="" @visible-change="visibleChange">
-                  <el-option
-                    style="width: 274px;"
-                    v-for="item in countriesKeys"
-                    :key="item"
-                    :label="countryConfig[item]"
-                    :value="countryConfig[item]">
-                    <span style="float: left">{{ $t(countries[item]) }}</span>
-                    <span style="float: right; color: #8492a6; font-size: 13px">{{ countryConfig[item] }}</span>
-                  </el-option>
-                </el-select>
-              </el-form-item>
-              <el-form-item prop="phone_number" style="margin-bottom: 0;float: right; width: 73%">
-                <el-input v-model="ruleForm.phone_number" :placeholder="$t('register.inputTelNum')"></el-input>
-              </el-form-item>
-              <el-form-item style="margin-bottom: 0; clear: both">
-                <div style="float: right;margin: 0 5px 0 auto">
-                  <nuxt-link :to="{ path:$i18n.path('loginEmail'), query:{ redirect: redirect, id: id, stageID: stageID, projectId: projectId} }">{{$t('register.loginEmail')}}></nuxt-link>
+    <div class="container login">
+        <div class="content">
+            <img src="~static/login_bg.jpg" />
+            <div class="login-body">
+                <div class="login-content">
+                    <div class="login-info">
+                        <login-ad />
+                    </div>
+                    <div class="login-form">
+                        <div class="login-title">{{$t('register.welcomeLogin')}}</div>
+                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
+                            <el-form-item style="margin-bottom: 0;float: left; width: 25%">
+                                <el-select v-model="ruleForm.codeNum"  :filter-method="filterMethod" filterable placeholder="" @visible-change="visibleChange">
+                                    <el-option
+                                        v-for="item in countriesKeys"
+                                        :key="item"
+                                        style="width: 274px;"
+                                        :label="countryConfig[item]"
+                                        :value="countryConfig[item]">
+                                        <span style="float: left">{{ $t(countries[item]) }}</span>
+                                        <span style="float: right; color: #8492a6; font-size: 13px">{{ countryConfig[item] }}</span>
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item prop="phone_number" style="margin-bottom: 0;float: right; width: 73%">
+                                <el-input v-model="ruleForm.phone_number" :placeholder="$t('register.inputTelNum')"></el-input>
+                            </el-form-item>
+                            <el-form-item style="margin-bottom: 0; clear: both">
+                                <div style="float: right;margin: 0 5px 0 auto">
+                                    <nuxt-link :to="{ path:$i18n.path('loginEmail'), query:{ redirect: redirect, id: id, stageID: stageID, projectId: projectId} }">{{$t('register.loginEmail')}}></nuxt-link>
+                                </div>
+                            </el-form-item>
+                            <el-form-item prop="password" style="margin-bottom: 6px">
+                                <el-input v-model="ruleForm.password" type="password" :placeholder="$t('register.inputPassword')"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="remember" style="margin-bottom: 5px; text-align: left">
+                                <el-checkbox v-model="ruleForm.remember" type="checkbox">{{$t('button.remember')}}</el-checkbox>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="login-btn" @click="submitForm('ruleForm')">{{$t('button.login')}}</el-button>
+                            </el-form-item>
+                        </el-form>
+                        <div class="login-reg">
+                            <nuxt-link :to="$i18n.path('forget')" >{{$t('register.forgetPassword')}}</nuxt-link>
+                            <nuxt-link :to="{ path:$i18n.path('register'), query:{ redirect: redirect} }" >{{$t('register.registerNow')}}</nuxt-link>
+                        </div>
+                        <div class="other-login">
+                            <span>{{$t('register.otherAccount')}}</span>
+                        </div>
+                        <div class="login-type">
+                            <a href="#"><img src="~static/qq.jpg" /></a>
+                            <a href="#"><img src="~static/wechat.jpg" /></a>
+                        </div>
+                    </div>
                 </div>
-              </el-form-item>
-              <el-form-item prop="password" style="margin-bottom: 6px">
-                <el-input type="password" v-model="ruleForm.password" :placeholder="$t('register.inputPassword')"></el-input>
-              </el-form-item>
-              <el-form-item prop="remember" style="margin-bottom: 5px; text-align: left">
-                <el-checkbox type="checkbox" v-model="ruleForm.remember">{{$t('button.remember')}}</el-checkbox>
-              </el-form-item>
-              <el-form-item>
-                <el-button class="login-btn" @click="submitForm('ruleForm')">{{$t('button.login')}}</el-button>
-              </el-form-item>
-            </el-form>
-            <div class="login-reg">
-              <nuxt-link :to="$i18n.path('forget')" >{{$t('register.forgetPassword')}}</nuxt-link>
-              <nuxt-link :to="{ path:$i18n.path('register'), query:{ redirect: redirect} }" >{{$t('register.registerNow')}}</nuxt-link>
             </div>
-            <div class="other-login">
-              <span>{{$t('register.otherAccount')}}</span>
-            </div>
-            <div class="login-type">
-              <a href="#"><img src="~static/qq.jpg" /></a>
-              <a href="#"><img src="~static/wechat.jpg" /></a>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 <script>
   import LoginAd from '~/components/LoginAd'
@@ -68,6 +68,9 @@
   import api from '../../utils/api'
 
   export default {
+    components: {
+      LoginAd
+    },
     data () {
       return {
         redirect: '/',
@@ -77,7 +80,7 @@
         projectId: null,
         countriesKeys: Object.keys(this.$t('countries')),
         countries: this.$t('countries'),
-        countryConfig: countryConfig,
+        countryConfig,
         ruleForm: {
           phone_number: '',
           password: '',
@@ -95,12 +98,9 @@
         }
       }
     },
-    components: {
-      LoginAd
-    },
     beforeMount () {
       this.ids = ''
-      if (this.$route.fullPath.indexOf('&id=') > -1) {
+      if (this.$route.fullPath.includes('&id=')) {
         this.ids = this.$route.fullPath.substring(this.$route.fullPath.indexOf('&id='))
         this.id = this.$route.query.id
         this.stageID = this.$route.query.stageID
@@ -141,13 +141,13 @@
       ...mapMutations([
         'SET_BASEINFO'
       ]),
-      filterMethod: function (query) {
+      filterMethod (query) {
         if (query !== '') {
-          let countries = Object.entries(this.$t('countries'))
-          let countriesKeys = []
+          const countries = Object.entries(this.$t('countries'))
+          const countriesKeys = []
           countries.map(([k, v]) => {
-            let searchStr = v + countryConfig[k]
-            if (searchStr.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+            const searchStr = v + countryConfig[k]
+            if (searchStr.toLowerCase().includes(query.toLowerCase())) {
               countriesKeys.push(k)
             }
           })
@@ -156,22 +156,22 @@
           this.countriesKeys = Object.keys(this.$t('countries'))
         }
       },
-      visibleChange: function (value) {
+      visibleChange (value) {
         if (value) {
           this.countriesKeys = Object.keys(this.$t('countries'))
         }
       },
-      submitForm: function (formName) {
+      submitForm (formName) {
         const _this = this
         this.$refs[formName].validate((valid) => {
           let myLogin = ''
           if (valid) {
-            let ruleForm = Object.assign(this.ruleForm)
+            const ruleForm = Object.assign(this.ruleForm)
             ruleForm.loginType = 'tel'
             if (this.ruleForm.remember) {
               myLogin = JSON.stringify(ruleForm)
             } else {
-              let rememberDTO = {
+              const rememberDTO = {
                 phone_number: this.ruleForm.phone_number,
                 codeNum: this.ruleForm.codeNum,
                 remember: this.ruleForm.remember,
@@ -191,7 +191,7 @@
                 const _info = CryptoJS.AES.encrypt(_res, 'startimes ltp')
                 utils.setSession('_info', _info.toString())
                 _this.SET_BASEINFO({ ...res })
-                if (_this.redirect.indexOf('translator') > -1) {
+                if (_this.redirect.includes('translator')) {
                   utils.toTranslator(api.translatorsiteURL, null, _this.ids)
                 } else {
                   _this.$router.push({ path: _this.redirect })

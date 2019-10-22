@@ -1,55 +1,55 @@
 <template>
-  <div class="container reset">
-    <div class="content">
-      <img src="~static/login_bg.jpg" />
-      <div class="login-body">
-        <div class="login-content">
-          <div class="login-info">
-            <login-ad />
-          </div>
-          <div class="reg-form">
-            <div class="reg-title">{{$t('register.forgetPassword')}}</div>
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
-              <el-form-item style="margin-bottom: 0;float: left; width: 25%">
-                <el-select v-model="ruleForm.codeNum" :filter-method="filterMethod" filterable placeholder="" @visible-change="visibleChange">
-                  <el-option
-                    style="width: 274px;"
-                    v-for="item in countriesKeys"
-                    :key="item"
-                    :label="countryConfig[item]"
-                    :value="countryConfig[item]">
-                    <span style="float: left">{{ $t(countries[item]) }}</span>
-                    <span style="float: right; color: #8492a6; font-size: 13px">{{ countryConfig[item] }}</span>
-                  </el-option>
-                </el-select>
-              </el-form-item>
-              <el-form-item prop="phone_number" style="margin-bottom: 0;float: right; width: 73%">
-                <el-input v-model="ruleForm.phone_number" :placeholder="$t('register.inputTelNum')"></el-input>
-              </el-form-item>
-              <el-form-item style="margin-bottom: 0; clear: both">
-                <div style="float: right;margin: 0 5px 0 auto">
-                  <nuxt-link :to="$i18n.path('forgetEmail')">{{$t('register.resetByEmail')}}></nuxt-link>
+    <div class="container reset">
+        <div class="content">
+            <img src="~static/login_bg.jpg" />
+            <div class="login-body">
+                <div class="login-content">
+                    <div class="login-info">
+                        <login-ad />
+                    </div>
+                    <div class="reg-form">
+                        <div class="reg-title">{{$t('register.forgetPassword')}}</div>
+                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
+                            <el-form-item style="margin-bottom: 0;float: left; width: 25%">
+                                <el-select v-model="ruleForm.codeNum" :filter-method="filterMethod" filterable placeholder="" @visible-change="visibleChange">
+                                    <el-option
+                                        v-for="item in countriesKeys"
+                                        :key="item"
+                                        style="width: 274px;"
+                                        :label="countryConfig[item]"
+                                        :value="countryConfig[item]">
+                                        <span style="float: left">{{ $t(countries[item]) }}</span>
+                                        <span style="float: right; color: #8492a6; font-size: 13px">{{ countryConfig[item] }}</span>
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item prop="phone_number" style="margin-bottom: 0;float: right; width: 73%">
+                                <el-input v-model="ruleForm.phone_number" :placeholder="$t('register.inputTelNum')"></el-input>
+                            </el-form-item>
+                            <el-form-item style="margin-bottom: 0; clear: both">
+                                <div style="float: right;margin: 0 5px 0 auto">
+                                    <nuxt-link :to="$i18n.path('forgetEmail')">{{$t('register.resetByEmail')}}></nuxt-link>
+                                </div>
+                            </el-form-item>
+                            <el-form-item prop="new_password">
+                                <el-input v-model="ruleForm.new_password" type="password" :placeholder="$t('register.newPassword')"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="verification_code">
+                                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
+                                <el-button class="get-validate" :disabled="sendMsgDisabled" @click="getCode">{{$t('register.getVerificationCode')}}{{ countdown === 0 ? '' : countdown + 's' }}</el-button>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="register-btn" :loading="loading" @click="submitForm('ruleForm')">{{$t('button.confirm')}}</el-button>
+                            </el-form-item>
+                        </el-form>
+                        <div class="reg-login">
+                            <nuxt-link :to="$i18n.path('login')">{{$t('register.loginExistAccount')}}</nuxt-link>
+                        </div>
+                    </div>
                 </div>
-              </el-form-item>
-              <el-form-item prop="new_password">
-                <el-input type="password" v-model="ruleForm.new_password" :placeholder="$t('register.newPassword')"></el-input>
-              </el-form-item>
-              <el-form-item prop="verification_code">
-                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
-                <el-button class="get-validate" @click="getCode" :disabled="sendMsgDisabled">{{$t('register.getVerificationCode')}}{{ countdown === 0 ? '' : countdown + 's' }}</el-button>
-              </el-form-item>
-              <el-form-item>
-                <el-button class="register-btn" @click="submitForm('ruleForm')" :loading="loading">{{$t('button.confirm')}}</el-button>
-              </el-form-item>
-            </el-form>
-            <div class="reg-login">
-              <nuxt-link :to="$i18n.path('login')">{{$t('register.loginExistAccount')}}</nuxt-link>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 <script>
 import LoginAd from '~/components/LoginAd'
@@ -60,6 +60,9 @@ import countryConfig from '../../utils/countryConfig'
 const phoneValidate = /^\d{1,30}$/
 
 export default {
+  components: {
+    LoginAd
+  },
   data () {
     return {
       countdown: 0,
@@ -67,7 +70,7 @@ export default {
       loading: false,
       countriesKeys: Object.keys(this.$t('countries')),
       countries: this.$t('countries'),
-      countryConfig: countryConfig,
+      countryConfig,
       ruleForm: {
         phone_number: '',
         new_password: '',
@@ -90,11 +93,8 @@ export default {
       }
     }
   },
-  components: {
-    LoginAd
-  },
   watch: {
-    'ruleForm.phone_number': function () {
+    'ruleForm.phone_number' () {
       // 监听手机号是否合法,如果合法,则允许获取验证码
       if (phoneValidate.test(this.ruleForm.phone_number)) {
         this.sendMsgDisabled = false
@@ -104,13 +104,13 @@ export default {
     }
   },
   methods: {
-    filterMethod: function (query) {
+    filterMethod (query) {
       if (query !== '') {
-        let countries = Object.entries(this.$t('countries'))
-        let countriesKeys = []
+        const countries = Object.entries(this.$t('countries'))
+        const countriesKeys = []
         countries.map(([k, v]) => {
-          let searchStr = v + countryConfig[k]
-          if (searchStr.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+          const searchStr = v + countryConfig[k]
+          if (searchStr.toLowerCase().includes(query.toLowerCase())) {
             countriesKeys.push(k)
           }
         })
@@ -119,12 +119,12 @@ export default {
         this.countriesKeys = Object.keys(this.$t('countries'))
       }
     },
-    visibleChange: function (value) {
+    visibleChange (value) {
       if (value) {
         this.countriesKeys = Object.keys(this.$t('countries'))
       }
     },
-    getCode: function () {
+    getCode () {
       const _this = this
       _this.sendMsgDisabled = true
       _this.countdown = 60
@@ -133,7 +133,7 @@ export default {
         phone_number: this.ruleForm.codeNum.concat(this.ruleForm.phone_number)
       })
     },
-    setCountdown: function () {
+    setCountdown () {
       if (this.countdown > 0) {
         this.sendMsgDisabled = true
         this.countdown--
@@ -142,7 +142,7 @@ export default {
         this.sendMsgDisabled = false
       }
     },
-    submitForm: function (formName) {
+    submitForm (formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {

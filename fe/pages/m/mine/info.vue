@@ -1,29 +1,29 @@
 <template>
-<div class="container m-mine-info">
-  <div class="m-edit-form">
-    <div class="m-edit-item">
-      <label>用户名</label><input type="text" v-model="user.name" disabled/>
+    <div class="container m-mine-info">
+        <div class="m-edit-form">
+            <div class="m-edit-item">
+                <label>用户名</label><input v-model="user.name" type="text" disabled/>
+            </div>
+            <div class="m-edit-item">
+                <label>手机号码</label><input v-model="user.phone_number" type="text" disabled/>
+            </div>
+            <div class="m-edit-item">
+                <label>注册时间</label><input v-model="user.create_time" type="text" disabled/>
+            </div>
+            <div class="m-edit-item">
+                <label>真实姓名</label><input v-model="user.nick_name" type="text" placeholder="请输入您的真实姓名"/>
+            </div>
+            <div class="m-edit-item">
+                <label>邮箱地址</label><input v-model="user.email" type="text" placeholder="请输入您的邮箱"/>
+            </div>
+            <div class="m-edit-item">
+                <label>公司名称</label><input v-model="user.company" type="text" placeholder="请输入您的公司名称"/>
+            </div>
+            <div class="m-edit-btn">
+                <button class="m-button" @click="edit">修改</button>
+            </div>
+        </div>
     </div>
-    <div class="m-edit-item">
-      <label>手机号码</label><input type="text" v-model="user.phone_number" disabled/>
-    </div>
-    <div class="m-edit-item">
-      <label>注册时间</label><input type="text" v-model="user.create_time" disabled/>
-    </div>
-    <div class="m-edit-item">
-      <label>真实姓名</label><input type="text" v-model="user.nick_name" placeholder="请输入您的真实姓名"/>
-    </div>
-    <div class="m-edit-item">
-      <label>邮箱地址</label><input type="text" v-model="user.email" placeholder="请输入您的邮箱"/>
-    </div>
-    <div class="m-edit-item">
-      <label>公司名称</label><input type="text" v-model="user.company" placeholder="请输入您的公司名称"/>
-    </div>
-    <div class="m-edit-btn">
-      <button class="m-button" @click="edit">修改</button>
-    </div>
-  </div>
-</div>
 </template>
 
 <script>
@@ -55,7 +55,7 @@ export default {
     })
   },
   methods: {
-    edit: function () {
+    edit () {
       if (!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(this.user.email)) {
         MessageBox.alert('请输入正确的邮箱格式', {type: 'error'})
         return false

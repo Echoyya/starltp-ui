@@ -1,45 +1,45 @@
 <template>
-  <div class="container register">
-    <div class="content">
-      <img src="~static/login_bg.jpg" />
-      <div class="login-body">
-        <div class="login-content">
-          <div class="login-info">
-            <login-ad />
-          </div>
-          <div class="reg-form">
-            <div class="reg-title">{{$t('register.welcome')}}</div>
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
-              <el-form-item prop="name">
-                <el-input v-model="ruleForm.name" :placeholder="$t('register.inputUserName')"></el-input>
-              </el-form-item>
-              <el-form-item prop="email" style="margin-bottom: 0">
-                <el-input v-model="ruleForm.email" :placeholder="$t('register.inputEmail')"></el-input>
-              </el-form-item>
-              <el-form-item style="margin-bottom: 0; clear: both">
-                <div style="float: right;margin: 0 5px 0 auto">
-                  <nuxt-link :to="{path:$i18n.path('register'), query:{redirect: redirect}}">{{$t('register.registerTel')}}></nuxt-link>
+    <div class="container register">
+        <div class="content">
+            <img src="~static/login_bg.jpg" />
+            <div class="login-body">
+                <div class="login-content">
+                    <div class="login-info">
+                        <login-ad />
+                    </div>
+                    <div class="reg-form">
+                        <div class="reg-title">{{$t('register.welcome')}}</div>
+                        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" :status-icon.boolean="true" class="form-body" @keyup.enter.native="submitForm('ruleForm')">
+                            <el-form-item prop="name">
+                                <el-input v-model="ruleForm.name" :placeholder="$t('register.inputUserName')"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="email" style="margin-bottom: 0">
+                                <el-input v-model="ruleForm.email" :placeholder="$t('register.inputEmail')"></el-input>
+                            </el-form-item>
+                            <el-form-item style="margin-bottom: 0; clear: both">
+                                <div style="float: right;margin: 0 5px 0 auto">
+                                    <nuxt-link :to="{path:$i18n.path('register'), query:{redirect: redirect}}">{{$t('register.registerTel')}}></nuxt-link>
+                                </div>
+                            </el-form-item>
+                            <el-form-item prop="password">
+                                <el-input v-model="ruleForm.password" type="password" :placeholder="$t('register.inputPassword')"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="verification_code">
+                                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
+                                <img ref="getImage" class="get-validate" :src="imageGetUrl" @click="getImageCode"/>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="register-btn" :loading="loading" @click="submitForm('ruleForm')">{{$t('button.register')}}</el-button>
+                            </el-form-item>
+                        </el-form>
+                        <div class="reg-login">
+                            <nuxt-link :to="{path:$i18n.path('loginEmail'), query:{redirect: redirect}}">{{$t('register.loginExistAccount')}}></nuxt-link>
+                        </div>
+                    </div>
                 </div>
-              </el-form-item>
-              <el-form-item prop="password">
-                <el-input type="password" v-model="ruleForm.password" :placeholder="$t('register.inputPassword')"></el-input>
-              </el-form-item>
-              <el-form-item prop="verification_code">
-                <el-input v-model="ruleForm.verification_code" type="text" class="validate-code" :placeholder="$t('register.inputVerificationCode')" />
-                <img class="get-validate" @click="getImageCode" :src="imageGetUrl" ref="getImage"/>
-              </el-form-item>
-              <el-form-item>
-                <el-button class="register-btn" @click="submitForm('ruleForm')" :loading="loading">{{$t('button.register')}}</el-button>
-              </el-form-item>
-            </el-form>
-            <div class="reg-login">
-              <nuxt-link :to="{path:$i18n.path('loginEmail'), query:{redirect: redirect}}">{{$t('register.loginExistAccount')}}></nuxt-link>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 <script>
 import LoginAd from '~/components/LoginAd'
@@ -49,6 +49,9 @@ import { MessageBox } from 'element-ui'
 import api from '../../utils/api'
 
 export default {
+  components: {
+    LoginAd
+  },
   data () {
     const checkEmail = (rule, value, callback) => {
       const _this = this
@@ -108,9 +111,6 @@ export default {
       }
     }
   },
-  components: {
-    LoginAd
-  },
   mounted () {
     this.redirect = this.$route.query.redirect ? this.$route.query.redirect : this.$i18n.path('')
     sessionStorage.clear()
@@ -119,10 +119,10 @@ export default {
     ...mapMutations([
       'SET_BASEINFO'
     ]),
-    getImageCode: function () {
+    getImageCode () {
       this.$refs.getImage.setAttribute('src', this.imageBaseUrl + '?time=' + new Date().getTime())
     },
-    submitForm: function (formName) {
+    submitForm (formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {

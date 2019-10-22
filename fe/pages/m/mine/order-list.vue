@@ -1,17 +1,17 @@
 <template>
-<div class="container m-mine-list">
-  <ul class="order-list" v-if="list.length > 0">
-    <nuxt-link class="order-item" v-for="item in list" :key="item.id" tag="li" :to="'/m/mine/order-detail?id='+item.id">
-      <div class="main">{{item.title}}</div>
-      <div class="time"><span class="language">{{item.customizedOrderItemViewDTO.sourceLanguage}} - {{item.customizedOrderItemViewDTO.targetLanguages}}</span>{{item.orderTime}}</div>
-      <div class="status" :class="{'done':item.orderStatus=='已完成', 'doing':item.orderStatus=='处理中'}">{{item.orderStatus}}</div>
-      <i class="iconfont more">&#xe615;</i>
-    </nuxt-link>
-  </ul>
-  <div v-if="list.length = 0" class="no-list">
-    您还没有订单
-  </div>
-</div>
+    <div class="container m-mine-list">
+        <ul v-if="list.length > 0" class="order-list">
+            <nuxt-link v-for="item in list" :key="item.id" class="order-item" tag="li" :to="'/m/mine/order-detail?id='+item.id">
+                <div class="main">{{item.title}}</div>
+                <div class="time"><span class="language">{{item.customizedOrderItemViewDTO.sourceLanguage}} - {{item.customizedOrderItemViewDTO.targetLanguages}}</span>{{item.orderTime}}</div>
+                <div class="status" :class="{'done':item.orderStatus=='已完成', 'doing':item.orderStatus=='处理中'}">{{item.orderStatus}}</div>
+                <i class="iconfont more">&#xe615;</i>
+            </nuxt-link>
+        </ul>
+        <div v-if="list.length = 0" class="no-list">
+            您还没有订单
+        </div>
+    </div>
 </template>
 
 <script>
@@ -23,13 +23,6 @@ import moment from 'moment-timezone'
 export default {
   layout: 'mobile',
   middleware: 'auth',
-  created () {
-    if (process.browser) {
-      this.formatConfig()
-      this.token = utils.getSession('_info').token
-      this.getOrders()
-    }
-  },
   data () {
     return {
       type: '',
@@ -45,8 +38,15 @@ export default {
       businessType: {}
     }
   },
+  created () {
+    if (process.browser) {
+      this.formatConfig()
+      this.token = utils.getSession('_info').token
+      this.getOrders()
+    }
+  },
   methods: {
-    formatConfig: function () {
+    formatConfig () {
       for (let i = 0; i < config.orderStatus.length; i++) {
         this.orderStatus[config.orderStatus[i].value] = config.orderStatus[i].label
       }
@@ -63,11 +63,11 @@ export default {
         this.businessType[config.businessType[i].value] = config.businessType[i].label
       }
     },
-    changeType: function (type) {
+    changeType (type) {
       this.type = type
       this.getOrders()
     },
-    getOrders: function () {
+    getOrders () {
       const _this = this
       const params = {
         token: this.token,
@@ -81,7 +81,7 @@ export default {
       }
       getOrders(params, function (res) {
         const _list = res.datas ? res.datas : []
-        let newList = []
+        const newList = []
         for (let i = 0; i < _list.length; i++) {
           const order = _list[i]
           order.orderTime = moment(order.orderTime).format('YYYY-MM-DD HH:mm:ss')

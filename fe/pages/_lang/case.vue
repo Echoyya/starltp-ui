@@ -1,12 +1,12 @@
 <template>
-  <div class="container page-default">
-    <div class="page-nav">
-      {{$t('footer.about')}} > <nuxt-link :to="$i18n.path('about/case')">{{$t('aboutUs.cases')}}</nuxt-link> > {{$t('case.caseDetail')}}
+    <div class="container page-default">
+        <div class="page-nav">
+            {{$t('footer.about')}} > <nuxt-link :to="$i18n.path('about/case')">{{$t('aboutUs.cases')}}</nuxt-link> > {{$t('case.caseDetail')}}
+        </div>
+        <div class="case-detail">
+            <div class="detail" v-html="language === 'CHINESE' ? content.subContents[0].details : content.subContents[1].details"></div>
+        </div>
     </div>
-    <div class="case-detail">
-      <div class="detail" v-html="language === 'CHINESE' ? content.subContents[0].details : content.subContents[1].details"></div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -21,10 +21,10 @@
       }
     },
     created () {
-      this.language = this.$route.path.indexOf('/en/') > -1 ? 'ENGLISH' : 'CHINESE'
-      let id = this.$route.query.id
+      this.language = this.$route.path.includes('/en/') ? 'ENGLISH' : 'CHINESE'
+      const id = this.$route.query.id
       const params = {
-        id: id
+        id
       }
       const _this = this
       getContentById(params, function (res) {

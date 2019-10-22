@@ -1,13 +1,13 @@
 <template>
-  <div class="news content">
-    <h3 class="title">{{language === 'CHINESE' ? content.subContents[0].title : content.subContents[1].title}}</h3>
-    <div class="info">
-      <span class="date">{{content.publishedTime}}</span>
-      <span class="author">{{language === 'CHINESE' ? content.subContents[0].author : content.subContents[1].author}}</span>
+    <div class="news content">
+        <h3 class="title">{{language === 'CHINESE' ? content.subContents[0].title : content.subContents[1].title}}</h3>
+        <div class="info">
+            <span class="date">{{content.publishedTime}}</span>
+            <span class="author">{{language === 'CHINESE' ? content.subContents[0].author : content.subContents[1].author}}</span>
+        </div>
+        <div class="detail" v-html="language === 'CHINESE' ? content.subContents[0].details : content.subContents[1].details">
+        </div>
     </div>
-    <div class="detail" v-html="language === 'CHINESE' ? content.subContents[0].details : content.subContents[1].details">
-    </div>
-  </div>
 </template>
 
 <script>
@@ -24,10 +24,10 @@
       }
     },
     created () {
-      this.language = this.$route.path.indexOf('/en/') > -1 ? 'ENGLISH' : 'CHINESE'
-      let id = this.$route.query.id
+      this.language = this.$route.path.includes('/en/') ? 'ENGLISH' : 'CHINESE'
+      const id = this.$route.query.id
       const params = {
-        id: id
+        id
       }
       const _this = this
       getContentById(params, function (res) {

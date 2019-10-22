@@ -1,55 +1,55 @@
 <template>
-<div class="container page-default">
-  <div class="content">
-    <div class="container-fluid container-fluid-content">
-      <div class="row-fluid">
-        <div class="span12 docArea">
-          <div class="word-page" STYLE="width:992px;height:1403px" >
-            <div class="word-content">
-              <img src="/agreement/1.jpg" width="100%" height="100%" /></embed>
+    <div class="container page-default">
+        <div class="content">
+            <div class="container-fluid container-fluid-content">
+                <div class="row-fluid">
+                    <div class="span12 docArea">
+                        <div class="word-page" STYLE="width:992px;height:1403px" >
+                            <div class="word-content">
+                                <img src="/agreement/1.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                        <div class="word-page" STYLE="width:992px;height:1403px" >
+                            <div class="word-content">
+                                <img src="/agreement/2.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                        <div class="word-page" STYLE="width:992px;height:1403px" >
+                            <div class="word-content">
+                                <img src="/agreement/3.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                        <div class="word-page" STYLE="width:992px;height:1403px" >
+                            <div class="word-content">
+                                <img src="/agreement/4.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                        <div class="word-page" STYLE="width:992px;height:1403px" >
+                            <div class="word-content">
+                                <img src="/agreement/5.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                        <div class="word-page" STYLE="width:992px;height:1403px">
+                            <div class="word-content">
+                                <img src="/agreement/6.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                        <div class="word-page" STYLE="width:992px;height:1403px">
+                            <div class="word-content">
+                                <img src="/agreement/7.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                        <div class="word-page" STYLE="width:992px;height:1403px">
+                            <div class="word-content">
+                                <img src="/agreement/8.jpg" width="100%" height="100%" /></embed>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="word-page" STYLE="width:992px;height:1403px" >
-            <div class="word-content">
-              <img src="/agreement/2.jpg" width="100%" height="100%" /></embed>
-            </div>
-          </div>
-          <div class="word-page" STYLE="width:992px;height:1403px" >
-            <div class="word-content">
-              <img src="/agreement/3.jpg" width="100%" height="100%" /></embed>
-            </div>
-          </div>
-          <div class="word-page" STYLE="width:992px;height:1403px" >
-            <div class="word-content">
-              <img src="/agreement/4.jpg" width="100%" height="100%" /></embed>
-            </div>
-          </div>
-          <div class="word-page" STYLE="width:992px;height:1403px" >
-            <div class="word-content">
-              <img src="/agreement/5.jpg" width="100%" height="100%" /></embed>
-            </div>
-          </div>
-          <div class="word-page" STYLE="width:992px;height:1403px">
-            <div class="word-content">
-              <img src="/agreement/6.jpg" width="100%" height="100%" /></embed>
-            </div>
-          </div>
-          <div class="word-page" STYLE="width:992px;height:1403px">
-            <div class="word-content">
-              <img src="/agreement/7.jpg" width="100%" height="100%" /></embed>
-            </div>
-          </div>
-          <div class="word-page" STYLE="width:992px;height:1403px">
-            <div class="word-content">
-              <img src="/agreement/8.jpg" width="100%" height="100%" /></embed>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-  </div>
-</div>
+        </div>
+    </div>
 </template>
 <script>
 export default {

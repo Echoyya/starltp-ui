@@ -1,43 +1,43 @@
 <template>
-  <div class="container certification">
-    <div class="content">
-      <div class="title">
-        {{$t('menu.certification')}}
-      </div>
-      <div class="img-list">
-        <div class="img-item">
-          <img src="~static/certification/1.png" />
+    <div class="container certification">
+        <div class="content">
+            <div class="title">
+                {{$t('menu.certification')}}
+            </div>
+            <div class="img-list">
+                <div class="img-item">
+                    <img src="~static/certification/1.png" />
+                </div>
+                <div class="img-item">
+                    <img src="~static/certification/2.png" />
+                </div>
+            </div>
+            <div class="img-list">
+                <div class="img-item">
+                    <img src="~static/certification/3.png" />
+                </div>
+                <div class="img-item">
+                    <img src="~static/certification/4.png" />
+                </div>
+            </div>
+            <div class="img-list">
+                <div class="img-item">
+                    <img src="~static/certification/5.png" />
+                </div>
+                <div class="img-item">
+                    <img src="~static/certification/6.png" />
+                </div>
+            </div>
+            <div class="img-list">
+                <div class="img-item">
+                    <img src="~static/certification/7.png" />
+                </div>
+                <div class="img-item">
+                    <img src="~static/certification/8.png" />
+                </div>
+            </div>
         </div>
-        <div class="img-item">
-          <img src="~static/certification/2.png" />
-        </div>
-      </div>
-      <div class="img-list">
-        <div class="img-item">
-          <img src="~static/certification/3.png" />
-        </div>
-        <div class="img-item">
-          <img src="~static/certification/4.png" />
-        </div>
-      </div>
-      <div class="img-list">
-        <div class="img-item">
-          <img src="~static/certification/5.png" />
-        </div>
-        <div class="img-item">
-          <img src="~static/certification/6.png" />
-        </div>
-      </div>
-      <div class="img-list">
-        <div class="img-item">
-          <img src="~static/certification/7.png" />
-        </div>
-        <div class="img-item">
-          <img src="~static/certification/8.png" />
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 <script>
 export default {

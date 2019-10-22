@@ -1,21 +1,21 @@
 <template>
-  <div class="container page-default">
-    <div class="page-nav">
-      {{$t('footer.about')}} > {{$t('aboutUs.cases')}}
+    <div class="container page-default">
+        <div class="page-nav">
+            {{$t('footer.about')}} > {{$t('aboutUs.cases')}}
+        </div>
+        <div class="page-title">
+            <span class="title-icon"></span>{{$t('aboutUs.cases')}}
+        </div>
+        <div class="case-content">
+            <div class="case-type">
+                <span :class="{active:type===1}" @click="SET_TYPE(1)">{{$t('menu.video')}}</span>
+                <span :class="{active:type===2}" @click="SET_TYPE(2)">{{$t('menu.thematic')}}</span>
+                <span :class="{active:type===4}" @click="SET_TYPE(4)">{{$t('menu.interpretation')}}</span>
+                <span :class="{active:type===3}" @click="SET_TYPE(3)">{{$t('menu.dubbing')}}</span>
+            </div>
+            <preview-case></preview-case>
+        </div>
     </div>
-    <div class="page-title">
-      <span class="title-icon"></span>{{$t('aboutUs.cases')}}
-    </div>
-    <div class="case-content">
-      <div class="case-type">
-        <span :class="{active:type===1}" @click="SET_TYPE(1)">{{$t('menu.video')}}</span>
-        <span :class="{active:type===2}" @click="SET_TYPE(2)">{{$t('menu.thematic')}}</span>
-        <span :class="{active:type===4}" @click="SET_TYPE(4)">{{$t('menu.interpretation')}}</span>
-        <span :class="{active:type===3}" @click="SET_TYPE(3)">{{$t('menu.dubbing')}}</span>
-      </div>
-      <preview-case></preview-case>
-    </div>
-  </div>
 </template>
 <script>
 import PreviewCase from '~/components/case/PreviewCase'

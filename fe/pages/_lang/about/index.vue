@@ -1,33 +1,33 @@
 <template>
-  <div class="container page-default">
-    <div class="content">
-      <div class="title">
-        {{$t('aboutUs.companyProfile')}}
-      </div>
-      <p>{{$t('aboutUs.profile1')}}
-      </p>
-      <p>
-        {{$t('aboutUs.profile2')}}
-      </p>
-      <p>
-        {{$t('aboutUs.profile3')}}
-      </p>
-      <div class="img-list">
-        <div class="img-item">
-          <img src="~static/about1.jpg" />
-          <p>{{$t('aboutUs.profile4')}}</p>
+    <div class="container page-default">
+        <div class="content">
+            <div class="title">
+                {{$t('aboutUs.companyProfile')}}
+            </div>
+            <p>{{$t('aboutUs.profile1')}}
+            </p>
+            <p>
+                {{$t('aboutUs.profile2')}}
+            </p>
+            <p>
+                {{$t('aboutUs.profile3')}}
+            </p>
+            <div class="img-list">
+                <div class="img-item">
+                    <img src="~static/about1.jpg" />
+                    <p>{{$t('aboutUs.profile4')}}</p>
+                </div>
+                <div class="img-item">
+                    <img src="~static/about2.jpg" />
+                    <p>{{$t('aboutUs.profile5')}}</p>
+                </div>
+                <div class="img-item">
+                    <img src="~static/about3.jpg" />
+                    <p>{{$t('aboutUs.profile6')}}</p>
+                </div>
+            </div>
         </div>
-        <div class="img-item">
-          <img src="~static/about2.jpg" />
-          <p>{{$t('aboutUs.profile5')}}</p>
-        </div>
-        <div class="img-item">
-          <img src="~static/about3.jpg" />
-          <p>{{$t('aboutUs.profile6')}}</p>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 <script>
 export default {

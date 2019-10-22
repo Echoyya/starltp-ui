@@ -1,26 +1,26 @@
 <template>
-  <div class="container order-success">
-    <div class="banner">
-      <img src="~static/translate-bg.jpg" />
+    <div class="container order-success">
+        <div class="banner">
+            <img src="~static/translate-bg.jpg" />
+        </div>
+        <div class="info">
+            <p>
+                <i class="iconfont">&#xe660;</i>
+            </p>
+            <p>
+                {{$t('orderSuccess.acceptOrder').replace('*',name)}}
+            </p>
+            <p>
+                {{$t('orderSuccess.acceptTip')}}
+            </p>
+            <p class="tip">
+                {{$t('orderSuccess.tips')}}
+            </p>
+        </div>
+        <div class="my-order-btn">
+            <el-button @click="goMyOrders">{{$t('orderSuccess.checkOrder')}}</el-button>
+        </div>
     </div>
-    <div class="info">
-      <p>
-        <i class="iconfont">&#xe660;</i>
-      </p>
-      <p>
-        {{$t('orderSuccess.acceptOrder').replace('*',name)}}
-      </p>
-      <p>
-        {{$t('orderSuccess.acceptTip')}}
-      </p>
-      <p class="tip">
-        {{$t('orderSuccess.tips')}}
-      </p>
-    </div>
-    <div class="my-order-btn">
-      <el-button @click="goMyOrders">{{$t('orderSuccess.checkOrder')}}</el-button>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -33,7 +33,7 @@ export default {
     ])
   },
   methods: {
-    goMyOrders: function () {
+    goMyOrders () {
       this.$router.push({ path: this.$i18n.path('mine/list') })
     }
   }

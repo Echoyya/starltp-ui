@@ -1,33 +1,33 @@
 <template>
-  <div class="container page-default">
-    <div class="page-title">
-      <span class="title-icon"></span>{{$t('menu.fee')}}
-    </div>
-    <div class="fees-content">
-      <div class="fees-title" id="video-table">{{$t('fees.title1')}}</div>
-      <video-table></video-table>
-    </div>
-    <div class="fees-content">
-      <div class="fees-title" id="thematic-table">{{$t('fees.title2')}}</div>
-      <thematic-table></thematic-table>
-    </div>
-    <div class="fees-content">
-      <div class="fees-title" id="listen-translation-table">{{$t('fees.title3')}}</div>
-      <listen-translation-table></listen-translation-table>
-    </div>
-    <div class="fees-content">
-      <div class="fees-title" id="simultaneous-interpretation-table">{{$t('fees.title4')}}</div>
-      <simultaneous-interpretation-table></simultaneous-interpretation-table>
-    </div>
-    <!-- <div class="fees-content">
+    <div class="container page-default">
+        <div class="page-title">
+            <span class="title-icon"></span>{{$t('menu.fee')}}
+        </div>
+        <div class="fees-content">
+            <div id="video-table" class="fees-title">{{$t('fees.title1')}}</div>
+            <video-table></video-table>
+        </div>
+        <div class="fees-content">
+            <div id="thematic-table" class="fees-title">{{$t('fees.title2')}}</div>
+            <thematic-table></thematic-table>
+        </div>
+        <div class="fees-content">
+            <div id="listen-translation-table" class="fees-title">{{$t('fees.title3')}}</div>
+            <listen-translation-table></listen-translation-table>
+        </div>
+        <div class="fees-content">
+            <div id="simultaneous-interpretation-table" class="fees-title">{{$t('fees.title4')}}</div>
+            <simultaneous-interpretation-table></simultaneous-interpretation-table>
+        </div>
+        <!-- <div class="fees-content">
       <div class="fees-title" id="transmission-equipment-rental-table">同传设备租赁价格表</div>
       <transmission-equipment-rental-table></transmission-equipment-rental-table>
     </div> -->
-    <div class="fees-content">
-      <div class="fees-title" id="dubbing-table">{{$t('fees.title5')}}</div>
-      <dubbing-table></dubbing-table>
+        <div class="fees-content">
+            <div id="dubbing-table" class="fees-title">{{$t('fees.title5')}}</div>
+            <dubbing-table></dubbing-table>
+        </div>
     </div>
-  </div>
 </template>
 <script>
 import VideoTable from '~/components/fees/VideoTable'
